@@ -1,0 +1,1 @@
+これはAstoro以外でGithub actionが反応するかのテストです
