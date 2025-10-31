@@ -1,4 +1,4 @@
-name: Deploy to Sakura
+name: Deploy to Sakura (via SSH/rsync)
 
 on:
   push:
@@ -10,32 +10,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # リポジトリのクローン
+      # 1. リポジトリのコードをチェックアウト（最新のv4を使用）
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Node.js のセットアップ
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 2. Node.js のセットアップ (以前のエラー対策で Node 20を使用)
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4 # v4に更新
         with:
           node-version: 20
 
-      # パッケージのインストール
-      - name: Install dependencies
-        run: npm install
+      # 3. パッケージのインストールとビルド
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
 
-      # ビルド
-      - name: Build project
-        run: npm run build
-
-      # distフォルダをサーバーにアップロード
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      # 4. SSH鍵と設定のセットアップ (rsyncのための標準的な方法)
+      - name: Setup SSH keys
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 990
-          local-dir: dist/  # アップロードするローカルフォルダ（最後には/をつけないとエラーが出る）
-          server-dir: /www/  # サーバー上のアップロード先
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      # 5. rsyncで静的ファイル（dist/の中身）をサーバーに同期
+      - name: Deploy files with rsync
+        run: |
+          SERVER_USER=${{ secrets.SERVER_USERNAME }}
+          SERVER_HOST=${{ secrets.SERVER_HOST }}
+          
+          # rsyncコマンドを実行し、dist/の中身を /home/USER/www/ に転送
+          # -a: アーカイブモード (パーミッション、タイムスタンプを維持)
+          # -z: 圧縮転送
+          # --delete: 転送元にないファイルを転送先から削除
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            ./dist/ "$SERVER_USER"@"$SERVER_HOST":/home/"$SERVER_USER"/www/
