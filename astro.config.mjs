@@ -11,7 +11,7 @@ import svelte from "@astrojs/svelte";
 // https://astro.build/config
 export default defineConfig({
   site: "https://tooniq.co.jp",
-  base: "tooniq_web",
+  //base: "tooniq_web", //github.ioのドメインでデプロイするなら必要
   prefetch: true,
   trailingSlash: "never",
   experimental: {
