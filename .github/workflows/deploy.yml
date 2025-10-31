@@ -6,26 +6,34 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. リポジトリのコードをチェックアウト（ダウンロード）
-    - name: Checkout code
-      uses: actions/checkout@v4
+      # リポジトリのクローン
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # 2. SSHのセットアップ
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/id_rsa
+      # Node.js のセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    # 3. rsyncでファイルをサーバーに同期
-    - name: Sync files
-      run: |
-        rsync -avz --delete \
-        -e "ssh -o StrictHostKeyChecking=no" \
-        ./ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/${{ secrets.SERVER_USERNAME }}/www/
+      # パッケージのインストール
+      - name: Install dependencies
+        run: npm install
+
+      # ビルド
+      - name: Build project
+        run: npm run build
+
+      # distフォルダをサーバーにアップロード
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
+          local-dir: dist  # アップロードするローカルフォルダ
+          server-dir: /www/  # サーバー上のアップロード先
