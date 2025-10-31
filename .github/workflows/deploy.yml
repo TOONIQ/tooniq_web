@@ -35,5 +35,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-ftp-pasv: true
           local-dir: dist/  # アップロードするローカルフォルダ（最後には/をつけないとエラーが出る）
           server-dir: /www/  # サーバー上のアップロード先
