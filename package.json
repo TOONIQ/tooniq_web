@@ -1,0 +1,49 @@
+{
+  "name": "tooniq-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build --remote",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/db": "^0.18.2",
+    "@astrojs/markdoc": "^0.15.8",
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/svelte": "^7.2.1",
+    "@astrojs/vercel": "^9.0.0",
+    "@keystatic/astro": "^5.0.4",
+    "@keystatic/core": "^0.5.48",
+    "@tailwindcss/vite": "^4.1.16",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "astro": "^5.15.3",
+    "astro-font": "^1.1.0",
+    "astro-seo": "^0.8.4",
+    "astro-seo-schema": "^5.1.0",
+    "lucide-react": "^0.344.0",
+    "mdast-util-to-string": "^4.0.0",
+    "playwright": "^1.56.1",
+    "preline": "^3.2.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.2.0",
+    "reading-time": "^1.5.0",
+    "schema-dts": "^1.1.2",
+    "svelte": "^5.43.2",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.15",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.19",
+    "mdast-util-from-markdown": "^2.0.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.1"
+  }
+}

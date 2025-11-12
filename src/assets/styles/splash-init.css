@@ -1,0 +1,48 @@
+/* スプラッシュスクリーン初期化スタイル */
+/* ページ読み込み時のちらつき防止 */
+
+/* 初期状態でメインコンテンツを隠す */
+html:not(.splash-done) body > *:not(#splash-screen) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* スプラッシュスクリーンは常に表示 */
+html:not(.splash-done) #splash-screen {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+}
+
+/* スプラッシュが完了したらコンテンツを表示 */
+html.splash-done body > * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.3s ease;
+}
+
+/* スプラッシュスクリーンの初期スタイル */
+#splash-screen {
+  /* より高いz-indexで他の要素より前に */
+  z-index: 99999 !important;
+  
+  /* 背景を完全に不透明に */
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1047 50%, #0a0e27 100%) !important;
+  
+  /* 初期表示を確実に */
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ロード中のボディ背景 */
+body {
+  background: #0a0e27 !important; /* スプラッシュと同じ背景色 */
+  min-height: 100vh;
+}
+
+/* スプラッシュが完了したら背景を元に戻す */
+html.splash-done body {
+  background: inherit;
+  transition: background 0.5s ease;
+}

@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.npm
+
+# build output
+dist/
+.astro/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.local
+.env.production
+
+# macOS
+.DS_Store
+
+# editor
+.vscode/
+.idea/
+
+# typescript
+*.tsbuildinfo
+
+# claude settings
+.claude/

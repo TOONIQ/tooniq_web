@@ -1,0 +1,56 @@
+---
+import { companyInfo } from "@utils/tooniq-data";
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24"
+>
+  <!-- 背景デコレーション -->
+  <div class="absolute inset-0 overflow-hidden opacity-20">
+    <div
+      class="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-purple-500 mix-blend-multiply blur-3xl filter"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-indigo-500 mix-blend-multiply blur-3xl filter"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+    <!-- タイトル -->
+    <h2
+      class="mb-6 text-4xl font-bold text-white sm:text-5xl md:text-6xl"
+    >
+      アニメの未来を、<br />一緒に創りませんか？
+    </h2>
+
+    <!-- 説明 -->
+    <p class="mb-12 text-xl text-slate-200 sm:text-2xl">
+      {companyInfo.tagline}
+    </p>
+
+    <!-- CTAボタン -->
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href="/contact"
+        class="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-semibold text-purple-900 shadow-2xl transition-all duration-300 hover:scale-105"
+      >
+        <span class="relative z-10">お問い合わせ</span>
+        <div
+          class="absolute inset-0 -z-0 bg-gradient-to-r from-purple-100 to-indigo-100 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+        </div>
+      </a>
+
+      <a
+        href={companyInfo.recruitUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-full border-2 border-white/50 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white hover:bg-white/20"
+      >
+        採用情報を見る
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,249 @@
+---
+import BaseLayout from "@layout/BaseLayout.astro";
+import { achievements } from "@utils/tooniq-data";
+import AchievementCard from "../components/tooniq/AchievementCard.astro";
+
+const seo = {
+  title: "実績紹介 - 合同会社TOONIQ",
+  description: "TOONIQがこれまで手がけたプロジェクトや支援実績をご紹介します",
+};
+---
+
+<BaseLayout seo={seo}>
+  <!-- ヘッダーセクション -->
+  <section
+    class="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24"
+  >
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h1 class="mb-6 text-5xl font-bold text-white sm:text-6xl md:text-7xl">
+        実績紹介
+      </h1>
+      <p class="mx-auto max-w-3xl text-xl text-slate-200 sm:text-2xl">
+        アニメ制作現場で培った実績と信頼
+      </p>
+    </div>
+  </section>
+
+  <!-- 主な実績 -->
+  <section class="bg-white py-24 dark:bg-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-16 text-center">
+        <h2
+          class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100"
+        >
+          主な実績
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+          大学サークルからプロの現場まで、幅広い支援実績
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {achievements.map((achievement) => <AchievementCard achievement={achievement} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 詳細な実績1 -->
+  <section class="bg-slate-50 py-24 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="flex items-center justify-center">
+          <div
+            class="flex h-96 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-purple-100 to-indigo-100 text-9xl shadow-xl dark:from-purple-900/50 dark:to-indigo-900/50"
+          >
+            🎓
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div
+            class="mb-4 inline-block rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-600 dark:bg-purple-900/50 dark:text-purple-400"
+          >
+            制作支援
+          </div>
+          <h3
+            class="mb-6 text-3xl font-bold text-slate-900 sm:text-4xl dark:text-slate-100"
+          >
+            全国大学アニメ制作<br />コラボレーション
+          </h3>
+          <div class="space-y-4 text-lg text-slate-700 dark:text-slate-300">
+            <p>
+              全国10の大学アニメ制作サークルが集まり、プロの作画監督の指導のもと一つのアニメ作品を制作する大規模プロジェクトを支援しました。
+            </p>
+            <p class="font-semibold text-slate-900 dark:text-slate-100">
+              提供した支援:
+            </p>
+            <ul class="space-y-2 pl-6">
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500">✓</span>
+                <span>制作進行管理システムの構築と運用</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500">✓</span>
+                <span>プロジェクト専用Webサイトの制作</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500">✓</span>
+                <span>各大学間のコミュニケーション支援</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500">✓</span>
+                <span>スケジュール管理とタスク進捗の可視化</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 詳細な実績2 -->
+  <section class="bg-white py-24 dark:bg-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="flex flex-col justify-center lg:order-1">
+          <div
+            class="mb-4 inline-block rounded-full bg-indigo-100 px-4 py-2 text-sm font-semibold text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400"
+          >
+            企画運営
+          </div>
+          <h3
+            class="mb-6 text-3xl font-bold text-slate-900 sm:text-4xl dark:text-slate-100"
+          >
+            学園祭企画支援
+          </h3>
+          <div class="space-y-4 text-lg text-slate-700 dark:text-slate-300">
+            <p>
+              大学の学園祭で、現代のテレビアニメを昔のアニメ制作の手法（セル画）で再現する特別企画を実施しました。
+            </p>
+            <p class="font-semibold text-slate-900 dark:text-slate-100">
+              担当した業務:
+            </p>
+            <ul class="space-y-2 pl-6">
+              <li class="flex items-start gap-3">
+                <span class="text-indigo-500">✓</span>
+                <span>サークルと他企業との間での契約交渉</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-indigo-500">✓</span>
+                <span>NDAなどの機密保持契約の締結</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-indigo-500">✓</span>
+                <span>企画全体の進行管理</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-indigo-500">✓</span>
+                <span>発注・納品のコーディネート</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex items-center justify-center lg:order-2">
+          <div
+            class="flex h-96 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-indigo-100 to-purple-100 text-9xl shadow-xl dark:from-indigo-900/50 dark:to-purple-900/50"
+          >
+            🎨
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 数字で見る実績 -->
+  <section class="bg-slate-50 py-24 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-16 text-center">
+        <h2
+          class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100"
+        >
+          数字で見る実績
+        </h2>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div
+            class="mb-4 text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-indigo-400"
+          >
+            10+
+          </div>
+          <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            支援大学数
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div
+            class="mb-4 text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-indigo-400"
+          >
+            100+
+          </div>
+          <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            プロジェクト参加者
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div
+            class="mb-4 text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-indigo-400"
+          >
+            複数
+          </div>
+          <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            企業との契約実績
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800"
+        >
+          <div
+            class="mb-4 text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-indigo-400"
+          >
+            2025
+          </div>
+          <div class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            設立年
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTAセクション -->
+  <section class="bg-white py-24 dark:bg-slate-800">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="mb-6 text-4xl font-bold text-slate-900 dark:text-slate-100">
+        あなたのプロジェクトも<br />私たちにお任せください
+      </h2>
+      <p class="mb-12 text-xl text-slate-600 dark:text-slate-300">
+        豊富な実績と技術力で、アニメ制作をサポートします
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-10 py-5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      >
+        お問い合わせ
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

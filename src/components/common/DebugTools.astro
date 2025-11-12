@@ -1,0 +1,32 @@
+---
+// デバッグツール（開発環境のみ）
+const isDev = import.meta.env.DEV;
+---
+
+{isDev && (
+  <div class="fixed bottom-4 right-4 z-[200] flex gap-2">
+    <button
+      id="clear-splash-flag"
+      class="rounded bg-red-500 px-3 py-1 text-xs text-white shadow-lg hover:bg-red-600"
+      title="スプラッシュスクリーンをリセット"
+    >
+      Reset Splash
+    </button>
+  </div>
+)}
+
+<script>
+  // 開発環境用のデバッグツール
+  const clearButton = document.getElementById("clear-splash-flag");
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      // スプラッシュスクリーン関連のストレージをクリア
+      sessionStorage.removeItem("tooniq_splash_shown_session");
+      localStorage.removeItem("tooniq_splash_shown");
+      localStorage.removeItem("tooniq_splash_time");
+      
+      // ページをリロード
+      window.location.reload();
+    });
+  }
+</script>

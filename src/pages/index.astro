@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layout/BaseLayout.astro";
+import HeroSection from "../components/tooniq/HeroSection.astro";
+import IndustryProblems from "../components/tooniq/IndustryProblems.astro";
+import ServicesOverview from "../components/tooniq/ServicesOverview.astro";
+import CTASection from "../components/tooniq/CTASection.astro";
+
+const seo = {
+  title: "合同会社TOONIQ - The future of Anime, today.",
+  description: "AIで「作業」から「人」を解放し、人間にしかできない「感動」を生み出すために、アニメ制作の構造を根本から変える",
+};
+---
+
+<BaseLayout seo={seo}>
+  <HeroSection />
+  <IndustryProblems />
+  <ServicesOverview />
+  <CTASection />
+</BaseLayout>

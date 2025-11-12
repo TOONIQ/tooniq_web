@@ -1,0 +1,293 @@
+---
+// スプラッシュスクリーンコンポーネント
+// 2秒間表示後、自動的にフェードアウト
+---
+
+<!-- スプラッシュスクリーン本体 -->
+<div
+  id="splash-screen"
+  class="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-gradient-to-br from-midnight-950 via-iris-950 to-midnight-950 text-white transition-all duration-700"
+  data-active="true"
+  style="display: flex !important;"
+>
+  <!-- ブランド名とタグラインを中央表示 -->
+  <div class="relative grid gap-6 text-center">
+    <!-- TOONIQロゴエリア（将来的にSVGロゴを配置） -->
+    <div class="mx-auto mb-2">
+      <div class="relative h-20 w-20 rounded-2xl bg-gradient-to-br from-neon-400 to-iris-600 p-0.5">
+        <div class="flex h-full w-full items-center justify-center rounded-2xl bg-midnight-950">
+          <span class="text-3xl font-bold text-white">T</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ブランド名 -->
+    <div class="space-y-2">
+      <p class="bg-gradient-to-r from-neon-300 to-iris-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+        合同会社TOONIQ
+      </p>
+      <span class="text-xs uppercase tracking-[0.3em] text-neon-300/80">
+        Tooniq LLC
+      </span>
+    </div>
+    
+    <!-- タグライン -->
+    <div class="space-y-1">
+      <p class="text-lg font-medium text-white md:text-xl">
+        AnimaTime で創る未来
+      </p>
+      <p class="text-sm text-slate-300/90">
+        アニメ制作の新しいスタンダード
+      </p>
+    </div>
+    
+    <!-- ローディングインジケーター -->
+    <div class="mx-auto mt-6 h-2 w-40 overflow-hidden rounded-full bg-white/10">
+      <div class="loading-bar h-full w-full bg-gradient-to-r from-neon-400 via-white to-iris-500"></div>
+    </div>
+    
+    <!-- アニメーションドット -->
+    <div class="flex items-center justify-center gap-3 mt-4">
+      <span class="dot w-3 h-3 bg-gradient-to-r from-neon-400 to-neon-500 rounded-full"></span>
+      <span class="dot w-3 h-3 bg-gradient-to-r from-iris-400 to-iris-500 rounded-full"></span>
+      <span class="dot w-3 h-3 bg-gradient-to-r from-neon-400 to-neon-500 rounded-full"></span>
+      <span class="dot w-3 h-3 bg-gradient-to-r from-iris-400 to-iris-500 rounded-full"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // スプラッシュスクリーンを非表示にする関数
+  const hideSplash = () => {
+    const splash = document.getElementById("splash-screen");
+    if (!splash) return;
+    
+    // 状態フラグを更新
+    splash.dataset.active = "false";
+    
+    // フェードアウトアニメーション開始
+    splash.classList.add("pointer-events-none", "opacity-0", "scale-105");
+    
+    // アニメーション完了後にDOMから削除（メモリ解放）
+    setTimeout(() => {
+      if (splash && splash.parentNode) {
+        splash.remove();
+      }
+    }, 800);
+  };
+
+  // スプラッシュスクリーンのライフサイクル管理
+  const initSplashLifecycle = () => {
+    const splash = document.getElementById("splash-screen");
+    if (!splash) return;
+    
+    // localStorageで表示済みフラグを確認
+    const hasShownSplash = localStorage.getItem("tooniq_splash_shown");
+    
+    if (hasShownSplash === "true") {
+      // 既に表示済みの場合は即座に非表示
+      splash.style.display = "none";
+      splash.remove();
+    } else {
+      // 初回表示の場合
+      localStorage.setItem("tooniq_splash_shown", "true");
+      // 2秒後にスプラッシュスクリーンを非表示
+      setTimeout(hideSplash, 2000);
+    }
+  };
+
+  // セッションストレージを使用してセッション内での表示を制御
+  // sessionStorageはタブを閉じるまで有効
+  const checkAndShowSplash = () => {
+    const splash = document.getElementById("splash-screen");
+    if (!splash) return;
+    
+    // sessionStorageで現在のセッションで表示済みか確認
+    const hasShownInSession = sessionStorage.getItem("tooniq_splash_shown_session");
+    
+    if (hasShownInSession === "true") {
+      // セッション内で既に表示済みの場合は非表示
+      splash.style.display = "none";
+      document.body.classList.add("splash-loaded");
+      document.documentElement.classList.add("splash-done");
+      splash.remove();
+    } else {
+      // 初回表示
+      splash.style.display = "flex";
+      document.body.classList.remove("splash-loaded");
+      sessionStorage.setItem("tooniq_splash_shown_session", "true");
+      
+      // 2秒後に非表示
+      setTimeout(() => {
+        hideSplash();
+        document.body.classList.add("splash-loaded");
+        document.documentElement.classList.add("splash-done");
+      }, 2000);
+    }
+  };
+  
+  // AstroのView Transitionsに対応
+  // ページ遷移時にはスプラッシュを表示しない
+  document.addEventListener("astro:page-load", () => {
+    // astro:page-loadは初回ロードとページ遷移両方で発火
+    checkAndShowSplash();
+  });
+  
+  // ページ遷移前にスプラッシュを削除
+  document.addEventListener("astro:before-swap", () => {
+    const splash = document.getElementById("splash-screen");
+    if (splash) {
+      splash.remove();
+    }
+  });
+</script>
+
+<style>
+  /* スプラッシュスクリーン専用のカスタムスタイル */
+  #splash-screen {
+    /* TOONIQ用のグラデーション背景 */
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(94, 234, 212, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0e27 0%, #1a1047 50%, #0a0e27 100%);
+  }
+
+  /* ローディングバーのアニメーション */
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%) scaleX(0.5);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateX(0%) scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) scaleX(0.5);
+      opacity: 0.5;
+    }
+  }
+
+  .loading-bar {
+    animation: loading 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    background-size: 200% 100%;
+  }
+  
+  /* ドットのアニメーション */
+  .dot {
+    animation: dot-wave 1.4s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(94, 234, 220, 0.5);
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes dot-wave {
+    0%, 60%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.4;
+    }
+    30% {
+      transform: translateY(-15px) scale(1.2);
+      opacity: 1;
+      box-shadow: 0 5px 25px rgba(94, 234, 220, 0.8);
+    }
+  }
+
+  /* ロゴの回転アニメーション */
+  @keyframes logoRotate {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.05) rotate(5deg);
+    }
+    50% {
+      transform: scale(1) rotate(0deg);
+    }
+    75% {
+      transform: scale(1.05) rotate(-5deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  #splash-screen > div > div:first-child {
+    animation: logoRotate 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.5));
+  }
+  
+  /* タイトルのグロー効果 */
+  @keyframes titleGlow {
+    0%, 100% {
+      filter: brightness(1);
+      transform: scale(1);
+    }
+    50% {
+      filter: brightness(1.2);
+      transform: scale(1.02);
+    }
+  }
+  
+  #splash-screen .text-4xl {
+    animation: titleGlow 3s ease-in-out infinite;
+  }
+
+  /* テキストのフェードイン効果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #splash-screen > div > * {
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+
+  #splash-screen > div > *:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  #splash-screen > div > *:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  #splash-screen > div > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  #splash-screen > div > *:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+
+  /* 初期状態でコンテンツを隠す */
+  body:not(.splash-loaded) > *:not(#splash-screen) {
+    visibility: hidden !important;
+  }
+  
+  /* スプラッシュスクリーンのスキップ */
+  #splash-screen[data-skip="true"],
+  #splash-screen.splash-hidden {
+    display: none !important;
+  }
+</style>
+

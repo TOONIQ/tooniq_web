@@ -1,0 +1,156 @@
+---
+const formStrings = {
+  name: "お名前",
+  email: "メールアドレス",
+  department: "お問い合わせ先",
+  subject: "お問い合わせ種別",
+  message: "お問い合わせ内容",
+  submit: "送信する",
+};
+
+// お問い合わせ先の部門
+const departments = [
+  { value: "", label: "選択してください" },
+  { value: "sales", label: "営業部門" },
+  { value: "support", label: "サポート部門" },
+  { value: "technical", label: "技術部門" },
+  { value: "general", label: "一般お問い合わせ" },
+];
+
+// お問い合わせの種類
+const subjects = [
+  { value: "", label: "選択してください" },
+  { value: "product-inquiry", label: "製品に関するお問い合わせ" },
+  { value: "price-quote", label: "お見積りのご依頼" },
+  { value: "technical-support", label: "技術的なサポート" },
+  { value: "bug-report", label: "不具合のご報告" },
+  { value: "feature-request", label: "機能のご要望" },
+  { value: "partnership", label: "パートナーシップについて" },
+  { value: "other", label: "その他" },
+];
+---
+
+<form class="p-4" aria-labelledby="form-title">
+  {/* Fieldset and legend for grouping form elements */}
+  <fieldset class="space-y-4">
+    <legend id="form-title" class="sr-only">{formStrings.submit}</legend>
+
+    {/* Department select field */}
+    <div class="relative">
+      <select
+        id="input-department"
+        class="peer block w-full rounded-lg border border-transparent bg-white p-4 text-sm text-slate-700 placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-teal-700/80 focus:pb-2 focus:pt-6 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80 not-placeholder-shown:pb-2 not-placeholder-shown:pt-6 [&>option]:text-slate-700"
+        required
+        aria-required="true"
+        aria-labelledby="input-department-label"
+      >
+        {departments.map((dept) => (
+          <option value={dept.value} disabled={dept.value === ""}>
+            {dept.label}
+          </option>
+        ))}
+      </select>
+      <label
+        id="input-department-label"
+        for="input-department"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        {formStrings.department}
+      </label>
+    </div>
+
+    {/* Subject select field */}
+    <div class="relative">
+      <select
+        id="input-subject"
+        class="peer block w-full rounded-lg border border-transparent bg-white p-4 text-sm text-slate-700 placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-teal-700/80 focus:pb-2 focus:pt-6 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80 not-placeholder-shown:pb-2 not-placeholder-shown:pt-6 [&>option]:text-slate-700"
+        required
+        aria-required="true"
+        aria-labelledby="input-subject-label"
+      >
+        {subjects.map((subj) => (
+          <option value={subj.value} disabled={subj.value === ""}>
+            {subj.label}
+          </option>
+        ))}
+      </select>
+      <label
+        id="input-subject-label"
+        for="input-subject"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        {formStrings.subject}
+      </label>
+    </div>
+
+    {/* Name input field */}
+    <div class="relative">
+      <input
+        type="text"
+        id="input-name"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-teal-700/80 focus:pb-2 focus:pt-6 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80 not-placeholder-shown:pb-2 not-placeholder-shown:pt-6"
+        placeholder={formStrings.name}
+        required
+        aria-required="true"
+        aria-labelledby="input-name-label"
+      />
+      <label
+        id="input-name-label"
+        for="input-name"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        {formStrings.name}
+      </label>
+    </div>
+
+      {/* Email input field */}
+    <div class="relative">
+      <input
+        type="email"
+        id="input-email"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-teal-700/80 focus:pb-2 focus:pt-6 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80 not-placeholder-shown:pb-2 not-placeholder-shown:pt-6"
+        placeholder={formStrings.email}
+        required
+        aria-required="true"
+        aria-labelledby="input-email-label"
+        aria-invalid="false"
+      />
+      <label
+        id="input-email-label"
+        for="input-email"
+        class="pointer-events-none absolute start-0 top-0 h-full w-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        {formStrings.email}
+      </label>
+    </div>
+
+      {/* Message textarea field */}
+    <div class="relative">
+      <textarea
+        id="input-message"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm placeholder:text-transparent autofill:pb-2 autofill:pt-6 focus:border-teal-700/80 focus:pb-2 focus:pt-6 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80 not-placeholder-shown:pb-2 not-placeholder-shown:pt-6"
+        placeholder={formStrings.message}
+        required
+        aria-required="true"
+        aria-labelledby="input-message-label"></textarea>
+      <label
+        id="input-message-label"
+        for="input-message"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        {formStrings.message}
+      </label>
+    </div>
+  </fieldset>
+
+      {/* Submit button */}
+  <div class="mt-8">
+    <button
+      type="submit"
+      class="inline-flex items-center text-nowrap rounded-lg bg-teal-700 px-6 py-3 font-medium text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg focus:bg-teal-800 focus:outline-hidden focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+      aria-label={formStrings.submit}
+    >
+      {formStrings.submit}
+    </button>
+  </div>
+</form>

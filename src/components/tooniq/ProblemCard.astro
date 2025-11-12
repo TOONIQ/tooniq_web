@@ -1,0 +1,46 @@
+---
+interface Props {
+  problem: {
+    title: string;
+    icon: string;
+  };
+}
+
+const { problem } = Astro.props;
+
+// アイコンマッピング
+const iconMap: Record<string, string> = {
+  users: "👥",
+  chart: "📊",
+  alert: "⚠️",
+  refresh: "🔄",
+  puzzle: "🧩",
+  lock: "🔒",
+};
+---
+
+<div
+  class="group relative overflow-hidden rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-orange-50 p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 dark:border-red-900/50 dark:from-red-900/20 dark:to-orange-900/20"
+>
+  <div class="flex items-start gap-4">
+    <!-- アイコン -->
+    <div
+      class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-orange-600 text-2xl shadow-md"
+    >
+      {iconMap[problem.icon] || "❗"}
+    </div>
+
+    <!-- タイトル -->
+    <h4
+      class="flex-1 pt-2 font-semibold leading-tight text-slate-900 dark:text-slate-100"
+    >
+      {problem.title}
+    </h4>
+  </div>
+
+  <!-- ホバーエフェクト -->
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-br from-red-500/5 to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  >
+  </div>
+</div>

@@ -1,0 +1,137 @@
+/* モバイルUI改善用カスタムスタイル */
+
+/* モバイルデバイスでのタッチ体験向上 */
+@media (max-width: 768px) {
+  /* タッチターゲットの最小サイズを確保 */
+  input,
+  select,
+  textarea,
+  button {
+    min-height: 48px; /* Googleの推奨タッチターゲットサイズ */
+  }
+  
+  /* フォーム要素の間隔を調整 */
+  form > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* セレクトボックスの矢印位置調整 */
+  select {
+    background-position: right 0.75rem center !important;
+  }
+  
+  /* モバイルでのフォントサイズ最適化 */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* iOSのズーム防止 */
+  }
+  
+  /* ボタンのタップフィードバック */
+  button:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* ダークモード時のコントラスト改善 */
+@media (prefers-color-scheme: dark) {
+  input,
+  select,
+  textarea {
+    background-color: rgba(30, 41, 59, 0.95);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    background-color: rgba(30, 41, 59, 1);
+    border-color: #5EEADC;
+  }
+}
+
+/* アクセシビリティ向上 */
+/* フォーカス時の視覚的フィードバック強化 */
+*:focus-visible {
+  outline: 3px solid #5EEADC;
+  outline-offset: 2px;
+}
+
+/* リンクとボタンのキーボードナビゲーション */
+a:focus-visible,
+button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(94, 234, 220, 0.5);
+}
+
+/* 高コントラストモード対応 */
+@media (prefers-contrast: high) {
+  .text-white {
+    color: #ffffff !important;
+  }
+  
+  .bg-slate-900 {
+    background-color: #0f172a !important;
+  }
+  
+  button[type="submit"] {
+    border: 2px solid currentColor;
+  }
+}
+
+/* スクロールパフォーマンス改善 */
+* {
+  -webkit-overflow-scrolling: touch; /* iOSでスムーズスクロール */
+}
+
+/* アニメーションのパフォーマンス最適化 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* モバイルランドスケープ対応 */
+@media (max-height: 500px) and (orientation: landscape) {
+  header {
+    position: absolute !important;
+    top: 0 !important;
+    transform: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: 0 !important;
+  }
+  
+  main {
+    padding-top: 80px;
+  }
+}
+
+/* フォーム送信ボタンの改善 */
+button[type="submit"] {
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:active::before {
+  width: 300px;
+  height: 300px;
+}

@@ -1,0 +1,184 @@
+---
+import BaseLayout from "@layout/BaseLayout.astro";
+import Icon from "@ui/icons/Icon.astro";
+import ContactFormJP from "@ui/forms/ContactFormJP.astro";
+import type { WithContext, Thing } from "schema-dts";
+import { companyInfo } from "@utils/tooniq-data";
+
+const emailHeading = "メールでのお問い合わせ:";
+const servicesHeading = "提供サービス";
+
+const contactDetails = {
+  email: "contact@tooniq.co.jp",
+};
+
+const servicesDetails = {
+  description: "AnimaTimeをはじめとした各種サービスの詳細をご覧ください。",
+  linkText: "サービス一覧を見る",
+  linkUrl: "/services",
+};
+
+// Content for the page title and subtitle
+const title = "お問い合わせ";
+const subTitle = "ご質問、ご相談、お気軽にお問い合わせください";
+
+// SEO metadata for the page
+const seo = {
+  title: "お問い合わせ - 合同会社TOONIQ",
+  description:
+    "TOONIQへのお問い合わせはこちらから。サービスに関するご質問、ご相談など、お気軽にご連絡ください。",
+};
+
+// Schema.org metadata for SEO
+const schema: WithContext<Thing> = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  inLanguage: "ja-JP",
+  "@id": Astro.url.href,
+  url: Astro.url.href,
+  name: "お問い合わせ - 合同会社TOONIQ",
+  description:
+    "TOONIQへのお問い合わせページ。サービスに関するご質問やビジネスのご相談など、お気軽にお問い合わせください。",
+  isPartOf: {
+    "@type": "WebSite",
+    url: `${Astro.site}`,
+    name: "合同会社TOONIQ",
+    description: companyInfo.mission,
+  },
+};
+---
+
+<BaseLayout seo={seo} schema={schema}>
+  <!-- ヘッダーセクション -->
+  <section
+    class="bg-gradient-to-br from-sky-600 via-blue-600 to-slate-700 py-24"
+  >
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h1 class="mb-6 text-5xl font-bold text-white sm:text-6xl md:text-7xl drop-shadow-2xl">
+        {title}
+      </h1>
+      <p class="mx-auto max-w-3xl text-xl text-slate-100 sm:text-2xl drop-shadow-lg">
+        {subTitle}
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[85rem] px-4 pb-28 pt-16 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-x-10 md:grid-cols-2 lg:gap-x-16">
+      <div
+        class="mb-10 rounded-xl bg-gradient-to-br from-sky-50 via-blue-50 to-slate-50 p-6 shadow-xl border border-sky-200 dark:from-sky-900/30 dark:to-slate-800/50 dark:border-slate-600 md:order-2 md:mb-0 md:p-8"
+      >
+        <ContactFormJP />
+      </div>
+
+      <div class="space-y-14">
+        <div class="flex gap-x-5">
+          <Icon name="email" class="size-6 shrink-0 text-sky-600 dark:text-sky-400" />
+          <div class="grow">
+            <h4 class="font-semibold text-slate-900 dark:text-slate-100">{emailHeading}</h4>
+
+            <a
+              class="mt-1 text-sm text-slate-600 transition-colors duration-300 hover:text-sky-600 focus:text-sky-600 focus:outline-hidden dark:text-slate-300 dark:hover:text-sky-400"
+              href={`mailto:${contactDetails.email}`}
+            >
+              {contactDetails.email}
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-x-5">
+          <Icon name="info" class="size-6 shrink-0 text-sky-600 dark:text-sky-400" />
+          <div class="grow">
+            <h4 class="font-semibold text-slate-900 dark:text-slate-100">{servicesHeading}</h4>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              {servicesDetails.description}
+            </p>
+            <p class="mt-2">
+              <a
+                class="group inline-flex items-center gap-x-2 text-sm font-medium text-sky-600 decoration-2 transition duration-300 hover:underline focus:underline focus:outline-hidden dark:text-sky-400"
+                href={servicesDetails.linkUrl}
+              >
+                {servicesDetails.linkText}
+                <Icon name="chevronRight" />
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-sky-200 bg-gradient-to-br from-white to-sky-50 p-6 shadow-lg dark:border-slate-600 dark:from-slate-800 dark:to-sky-900/20">
+          <h4 class="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-100">採用に関するお問い合わせ</h4>
+          <p class="mb-4 text-sm text-slate-600 dark:text-slate-300">
+            TOONIQでは、アニメ業界の未来を一緒に創る仲間を募集しています。
+          </p>
+          <a
+            href={companyInfo.recruitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300"
+          >
+            採用情報を見る
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Automatically adjusting the height of the textarea
+    // based on its content. Triggers when the textarea content changes.
+    document.addEventListener("astro:page-load", () => {
+      function textareaAutoHeight(
+        el: HTMLTextAreaElement,
+        offsetTop: number = 0,
+      ): void {
+        el.style.height = "auto";
+        el.style.height = `${el.scrollHeight + offsetTop}px`;
+      }
+
+      (() => {
+        const textareas: string[] = ["#input-message"];
+
+        textareas.forEach((selector) => {
+          const textarea = document.querySelector(
+            selector,
+          ) as HTMLTextAreaElement;
+
+          if (!textarea) return;
+
+          const overlay = textarea.closest(".hs-overlay");
+
+          if (overlay) {
+            const instance = (window as any).HSOverlay.getInstance(
+              overlay,
+              true,
+            );
+
+            if (instance) {
+              instance.element.on("open", () =>
+                textareaAutoHeight(textarea, 3),
+              );
+            }
+          } else {
+            textareaAutoHeight(textarea, 3);
+          }
+
+          textarea.addEventListener("input", () => {
+            textareaAutoHeight(textarea, 3);
+          });
+        });
+      })();
+    });
+  </script>
+</BaseLayout>

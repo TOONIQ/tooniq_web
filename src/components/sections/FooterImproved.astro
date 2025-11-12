@@ -1,0 +1,118 @@
+---
+import { companyInfo, services } from "@utils/tooniq-data";
+import { navigationLinks } from "@utils/navigation";
+
+// Props for customization
+const companyName = companyInfo.name;
+const companyDescription = companyInfo.mission;
+
+// Contact information for the company
+const contactDetails = {
+  email: "contact@tooniq.co.jp",
+  website: "tooniq.co.jp",
+};
+
+// Dynamic date for copyright display
+const copyrightYear = new Date().getFullYear();
+---
+
+<footer class="mt-auto w-full">
+  <!-- メインのフッターエリア -->
+  <div class="bg-gradient-to-b from-gray-50 to-gray-100 border-t-2 border-gray-200 dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+    <div class="mx-auto w-full max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Company Information */}
+        <div class="lg:col-span-2">
+          <a
+            href="/"
+            class="inline-block text-3xl font-bold text-gray-900 hover:text-purple-600 transition-colors focus:opacity-80 focus:outline-hidden dark:text-white dark:hover:text-purple-400"
+          >
+            {companyName}
+          </a>
+          <p class="mt-3 text-base font-medium text-gray-800 dark:text-gray-200">
+            {companyInfo.tagline}
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            {companyDescription}
+          </p>
+          <div class="mt-6 space-y-2">
+            <p class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+              <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <span class="font-semibold">Email:</span>
+              <a href={`mailto:${contactDetails.email}`} class="text-purple-600 hover:text-purple-700 dark:text-purple-400">
+                {contactDetails.email}
+              </a>
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 class="mb-4 text-base font-bold text-gray-900 dark:text-white">
+            リンク
+          </h3>
+          <ul class="space-y-3">
+            {
+              navigationLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    class="text-sm text-gray-700 transition-colors hover:text-purple-600 hover:translate-x-1 inline-block dark:text-gray-300 dark:hover:text-purple-400"
+                  >
+                    → {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 class="mb-4 text-base font-bold text-gray-900 dark:text-white">
+            サービス
+          </h3>
+          <ul class="space-y-3">
+            {
+              services.slice(0, 4).map((service) => (
+                <li>
+                  <a
+                    href="/services"
+                    class="text-sm text-gray-700 transition-colors hover:text-purple-600 hover:translate-x-1 inline-block dark:text-gray-300 dark:hover:text-purple-400"
+                  >
+                    → {service.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Copyright Section */}
+  <div class="bg-gray-100 border-t border-gray-200 dark:bg-slate-950 dark:border-slate-800">
+    <div class="mx-auto w-full max-w-[85rem] px-4 py-6 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
+          © {copyrightYear} {companyName}. All rights reserved.
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          {companyInfo.tagline}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* フッターリンクのホバーアニメーション */
+  footer a:hover {
+    transition: all 0.2s ease;
+  }
+</style>

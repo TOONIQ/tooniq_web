@@ -1,0 +1,338 @@
+---
+const formStrings = {
+  sectionTitle: "お問い合わせ情報",
+  name: "お名前",
+  namePlaceholder: "山田 太郎",
+  company: "会社名",
+  companyPlaceholder: "株式会社サンプル",
+  email: "メールアドレス",
+  emailPlaceholder: "sample@example.com",
+  phone: "電話番号",
+  phonePlaceholder: "03-1234-5678",
+  department: "お問い合わせ先",
+  subject: "お問い合わせ種別",
+  priority: "優先度",
+  message: "お問い合わせ内容",
+  messagePlaceholder: "ご質問やご要望をお書きください",
+  submit: "送信する",
+  autoReply: "※送信後に自動返信メールをお送りします。",
+  required: "必須",
+};
+
+// お問い合わせ先の部門
+const departments = [
+  { value: "", label: "-- 選択してください --" },
+  { value: "sales", label: "営業部門（製品の導入相談）" },
+  { value: "support", label: "サポート部門（技術的な質問）" },
+  { value: "billing", label: "経理部門（請求・支払い関連）" },
+  { value: "partnership", label: "事業開発部門（提携・協業）" },
+  { value: "hr", label: "人事部門（採用関連）" },
+  { value: "general", label: "総務部門（その他一般）" },
+];
+
+// お問い合わせの種類
+const subjects = [
+  { value: "", label: "-- 選択してください --" },
+  { value: "anima-time", label: "AnimaTimeの導入について" },
+  { value: "ai-chatbot", label: "AI / ChatBot 活用について" },
+  { value: "quote", label: "見積もり依頼" },
+  { value: "demo", label: "デモのご依頼" },
+  { value: "technical", label: "技術的なご質問" },
+  { value: "bug", label: "不具合のご報告" },
+  { value: "feature", label: "機能改善のご要望" },
+  { value: "contract", label: "契約・ライセンス関連" },
+  { value: "payment", label: "お支払い関連" },
+  { value: "partnership", label: "パートナーシップのご相談" },
+  { value: "recruitment", label: "採用について" },
+  { value: "other", label: "その他のお問い合わせ" },
+];
+
+// 優先度
+const priorities = [
+  { value: "low", label: "低（通常対応）" },
+  { value: "medium", label: "中（早めの対応希望）" },
+  { value: "high", label: "高（至急対応希望）" },
+];
+---
+
+<form class="space-y-6" aria-labelledby="contact-form-heading">
+  <fieldset class="space-y-4">
+    <legend id="contact-form-heading" class="sr-only">
+      {formStrings.sectionTitle}
+    </legend>
+
+    {/* お問い合わせ先部門 */}
+    <div class="space-y-2">
+      <label
+        for="department"
+        class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+      >
+        {formStrings.department}
+        <span class="rounded bg-sky-600 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
+          {formStrings.required}
+        </span>
+      </label>
+      <select
+        id="department"
+        name="department"
+        class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30 [&>option]:bg-white dark:[&>option]:bg-slate-900 [&>option]:text-slate-900 dark:[&>option]:text-white"
+        required
+        aria-required="true"
+      >
+        {departments.map((dept) => (
+          <option value={dept.value} disabled={dept.value === ""}>
+            {dept.label}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* お問い合わせ種別 */}
+    <div class="space-y-2">
+      <label
+        for="subject"
+        class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+      >
+        {formStrings.subject}
+        <span class="rounded bg-sky-600 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
+          {formStrings.required}
+        </span>
+      </label>
+      <select
+        id="subject"
+        name="subject"
+        class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30 [&>option]:bg-white dark:[&>option]:bg-slate-900 [&>option]:text-slate-900 dark:[&>option]:text-white"
+        required
+        aria-required="true"
+      >
+        {subjects.map((subj) => (
+          <option value={subj.value} disabled={subj.value === ""}>
+            {subj.label}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* 優先度 */}
+    <div class="space-y-2">
+      <label
+        for="priority"
+        class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+      >
+        {formStrings.priority}
+      </label>
+      <select
+        id="priority"
+        name="priority"
+        class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30 [&>option]:bg-white dark:[&>option]:bg-slate-900 [&>option]:text-slate-900 dark:[&>option]:text-white"
+      >
+        {priorities.map((priority) => (
+          <option value={priority.value}>
+            {priority.label}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* 名前と会社名を横並び */}
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="space-y-2">
+        <label
+          for="name"
+          class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+        >
+          {formStrings.name}
+          <span class="rounded bg-sky-600 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
+            {formStrings.required}
+          </span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder={formStrings.namePlaceholder}
+          class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30"
+          required
+          aria-required="true"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label
+          for="company"
+          class="text-sm font-medium text-slate-800 dark:text-white"
+        >
+          {formStrings.company}
+        </label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          placeholder={formStrings.companyPlaceholder}
+          class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30"
+        />
+      </div>
+    </div>
+
+    {/* メールアドレスと電話番号を横並び */}
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="space-y-2">
+        <label
+          for="email"
+          class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+        >
+          {formStrings.email}
+          <span class="rounded bg-sky-600 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
+            {formStrings.required}
+          </span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder={formStrings.emailPlaceholder}
+          class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30"
+          required
+          aria-required="true"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label
+          for="phone"
+          class="text-sm font-medium text-slate-800 dark:text-white"
+        >
+          {formStrings.phone}
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder={formStrings.phonePlaceholder}
+          class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30"
+        />
+      </div>
+    </div>
+
+    {/* お問い合わせ内容 */}
+    <div class="space-y-2">
+      <label
+        for="message"
+        class="flex items-center gap-1 text-sm font-medium text-slate-800 dark:text-white"
+      >
+        {formStrings.message}
+        <span class="rounded bg-sky-600 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
+          {formStrings.required}
+        </span>
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows="6"
+        placeholder={formStrings.messagePlaceholder}
+        class="w-full rounded-lg border border-sky-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 hover:border-sky-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30 transition-all duration-200 dark:border-sky-700/50 dark:bg-slate-900/80 dark:text-white dark:hover:border-sky-600/50 dark:focus:border-sky-400 dark:focus:ring-sky-400/30"
+        required
+        aria-required="true"
+      ></textarea>
+    </div>
+  </fieldset>
+
+  <div class="space-y-4">
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+      {formStrings.autoReply}
+    </p>
+
+    <button
+      type="submit"
+      class="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 via-blue-600 to-sky-500 px-8 py-3 text-base font-bold text-white shadow-lg shadow-sky-900/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-sky-900/40 hover:from-sky-600 hover:via-blue-700 hover:to-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/50 active:scale-[0.98]"
+      aria-label={formStrings.submit}
+    >
+      <span>{formStrings.submit}</span>
+      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </button>
+  </div>
+</form>
+
+<style>
+  /* セレクトボックスのカスタマイズ */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230EA5E9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em 1.2em;
+    padding-right: 3rem;
+    cursor: pointer;
+  }
+  
+  select:hover {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    }
+    
+    select:hover {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2387CEEB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    }
+  }
+  
+  /* オプションのスタイル */
+  select option {
+    padding: 0.75rem;
+    background: white;
+    color: #1e293b;
+  }
+  
+  select option:disabled {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    select option {
+      background: #1e293b;
+      color: white;
+    }
+    
+    select option:disabled {
+      color: #64748b;
+    }
+  }
+
+  /* フォーカス時のアニメーション */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(14, 165, 233, 0.3),
+                  0 0 10px rgba(14, 165, 233, 0.2),
+                  inset 0 0 5px rgba(14, 165, 233, 0.05);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.4),
+                  0 0 20px rgba(14, 165, 233, 0.3),
+                  inset 0 0 10px rgba(14, 165, 233, 0.1);
+    }
+  }
+
+  /* 必須マーカーのスタイル */
+  .text-xs {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* ボタンのホバー効果 */
+  button[type="submit"]:hover svg {
+    transform: translateX(4px);
+    transition: transform 0.3s ease;
+  }
+</style>
