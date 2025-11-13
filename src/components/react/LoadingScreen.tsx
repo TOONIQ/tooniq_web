@@ -14,19 +14,21 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function LoadingScreen() {
-  const [isLoading, setIsLoading] = useState(true)
+  // 初期状態を賢く設定：既に訪問済みの場合は最初からfalse
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === 'undefined') return false
+    // sessionStorageを同期的にチェック
+    return !sessionStorage.getItem('tooniq-has-visited')
+  })
+
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     // SSRチェック
     if (typeof window === 'undefined') return
 
-    // 初回訪問チェック
-    const hasVisited = sessionStorage.getItem('tooniq-has-visited')
-
-    if (hasVisited) {
-      // 2回目以降の訪問 - すぐに非表示
-      setIsLoading(false)
+    // 既に訪問済みの場合は何もしない
+    if (sessionStorage.getItem('tooniq-has-visited')) {
       return
     }
 

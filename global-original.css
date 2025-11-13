@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* グローバルスタイル - TOONIQウェブサイト用 */
+
+@layer base {
+  /* フォントの設定 */
+  @font-face {
+    font-family: 'Inter';
+    font-display: swap;
+    src: local('Inter');
+  }
+
+  /* 基本スタイル */
+  body {
+    @apply bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100;
+    @apply font-sans antialiased;
+    @apply transition-colors duration-300;
+  }
+
+  /* スムーズスクロール */
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  /* グラスモーフィズム効果 */
+  .glass-effect {
+    @apply bg-white/80 dark:bg-dark-card/80;
+    @apply backdrop-blur-md;
+    @apply border border-gray-200/50 dark:border-dark-border/50;
+    @apply shadow-lg;
+  }
+
+  /* グラデーションテキスト */
+  .gradient-text {
+    @apply bg-gradient-to-r from-anime-purple via-anime-blue to-anime-cyan;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* ホバーエフェクト付きカード */
+  .hover-card {
+    @apply transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-2xl;
+  }
+
+  /* セクション共通スタイル */
+  .section-padding {
+    @apply py-20;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* アニメーション遅延ユーティリティ */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* カスタムスクロールバー */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-dark-card;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-anime-purple/50 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-anime-purple;
+  }
+}

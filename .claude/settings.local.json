@@ -5,7 +5,18 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(npm run build:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(gh pr create:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(for component in Card3D ContactForm GlowingText Header ParallaxSection ThemeProvider TypewriterText)",
+      "Bash(do curl -s \"https://raw.githubusercontent.com/TOONIQ/tooniq_web/feature/astro-migration/src/components/react/$component.tsx\" -o \"$component-original.tsx\")",
+      "Bash(done)",
+      "Bash(do cp \"$component-original.tsx\" \"src/components/react/$component.tsx\")",
+      "Bash(npm run dev:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,296 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import GlowingText from '@/components/react/GlowingText';
+import TypewriterText from '@/components/react/TypewriterText';
+import Card3D from '@/components/react/Card3D';
+import ParallaxSection from '@/components/react/ParallaxSection';
+
+import {
+  ArrowRight,
+  Sparkles,
+  Cpu,
+  Users,
+  Rocket,
+  Cloud,
+  Bot,
+  FileText,
+  Code,
+  Globe,
+  Briefcase,
+  Target,
+  Lightbulb,
+  CheckCircle
+} from 'lucide-react';
+
+const pageTitle = 'TOONIQ';
+const pageDescription = 'AIで作業から人を解放し、人間にしかできない感動を生み出すために、アニメ制作の構造を根本から変える';
+
+const services = [
+  {
+    icon: Cloud,
+    title: 'AnimaTime',
+    description: 'クラウド制作進行ソフト',
+    detail: 'スケジュールの自動最適化と進捗管理を一元化',
+    color: 'from-anime-purple to-anime-blue',
+    href: '/services#animatime'
+  },
+  {
+    icon: Briefcase,
+    title: '技術コンサルタント',
+    description: '最新技術の導入支援',
+    detail: '適切なソフトウェアの選定から導入まで完全サポート',
+    color: 'from-anime-blue to-anime-cyan',
+    href: '/services#consulting'
+  },
+  {
+    icon: Bot,
+    title: 'ChatBot作成',
+    description: '企業専用AIアシスタント',
+    detail: 'NDAに配慮した安全な社内専用AI',
+    color: 'from-anime-cyan to-anime-purple',
+    href: '/services#chatbot'
+  },
+  {
+    icon: FileText,
+    title: '議事録ツール',
+    description: '自動文字起こし＆要約',
+    detail: 'アニメ業界特化の音声認識と要約機能',
+    color: 'from-anime-purple to-anime-pink',
+    href: '/services#minutes'
+  },
+  {
+    icon: Code,
+    title: 'カスタム開発',
+    description: 'オーダーメイドシステム',
+    detail: '既存システムと完璧に調和する新機能開発',
+    color: 'from-anime-pink to-anime-blue',
+    href: '/services#custom'
+  },
+  {
+    icon: Globe,
+    title: 'Webサイト制作',
+    description: 'プロフェッショナルなWeb制作',
+    detail: '企業サイトから作品特設ページまで対応',
+    color: 'from-anime-blue to-anime-purple',
+    href: '/services#website'
+  }
+];
+
+const problems = [
+  {
+    icon: Users,
+    title: '人材不足',
+    description: '慢性的な人手不足と後進育成の課題'
+  },
+  {
+    icon: Target,
+    title: '作品過多',
+    description: '制作リソースの奪い合いによる品質低下'
+  },
+  {
+    icon: Lightbulb,
+    title: '技術の属人化',
+    description: 'ノウハウの非共有と車輪の再発明'
+  }
+];
+
+const heroTexts = [
+  "AIで作業から人を解放",
+  "人間にしかできない感動を",
+  "アニメ制作の未来を創る",
+  "技術で限界を超える"
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-20">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="Digital creative workspace"
+        class="w-full h-full object-cover opacity-20 dark:opacity-10"
+      />
+    </div>
+
+    <!-- Animated Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-br from-anime-purple/20 via-anime-blue/10 to-anime-cyan/20 animate-gradient"></div>
+      <div class="absolute top-20 left-20 w-72 h-72 bg-anime-purple/30 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-anime-cyan/30 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-5xl mx-auto">
+        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-effect mb-6">
+          <Sparkles className="w-5 h-5 text-anime-purple" />
+          <span class="text-sm font-medium">The future of Anime, today.</span>
+        </div>
+
+        <div class="mb-6">
+          <GlowingText client:load>
+            合同会社TOONIQ
+          </GlowingText>
+        </div>
+
+        <div class="mb-12 max-w-3xl mx-auto">
+          <TypewriterText
+            texts={heroTexts}
+            className="text-gray-600 dark:text-gray-300"
+            client:load
+          />
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/services"
+            class="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-anime-purple to-anime-blue text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            サービスを見る
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </a>
+
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 rounded-full glass-effect font-semibold hover:bg-anime-purple/10 dark:hover:bg-anime-cyan/10 transition-colors duration-300"
+          >
+            お問い合わせ
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-card">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">
+          アニメ業界が抱える<span class="gradient-text">課題</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          TOONIQが解決する業界の根本的な問題
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {problems.map((problem) => (
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full glass-effect mb-4">
+              <problem.icon className="w-8 h-8 text-anime-purple" />
+            </div>
+            <h3 class="text-xl font-semibold mb-2">{problem.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              {problem.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 p-8 rounded-2xl glass-effect">
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-4">
+              <span class="gradient-text">TOONIQの解決策</span>
+            </h3>
+            <ul class="space-y-3">
+              {[
+                '最新AI技術による制作業務の自動化',
+                'クラウドベースの統合制作管理システム',
+                'ノウハウの可視化と共有プラットフォーム',
+                '人材育成と技術継承の仕組み構築'
+              ].map((item) => (
+                <li class="flex items-start space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700 dark:text-gray-300">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex-1 flex justify-center">
+            <div class="relative w-96 h-64">
+              <img
+                src="/images/work-1.jpg"
+                alt="AI and technology"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
+              <div class="absolute -right-4 -bottom-4 w-24 h-24">
+                <div class="absolute inset-0 bg-gradient-to-r from-anime-purple to-anime-cyan rounded-full opacity-60 blur-lg"></div>
+                <div class="absolute inset-2 bg-gradient-to-r from-anime-purple to-anime-cyan rounded-full"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <Cpu className="w-12 h-12 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-white dark:bg-dark-bg">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">
+          <span class="gradient-text">サービス</span>一覧
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          アニメ制作を革新する6つのソリューション
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ParallaxSection offset={30} client:load>
+            <div class="group">
+              <a href={service.href}>
+                <Card3D className="h-full" client:load>
+                  <div class="p-6">
+                    <div class={`inline-flex p-3 rounded-lg bg-gradient-to-r ${service.color} mb-4`}>
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 group-hover:gradient-text transition-all duration-300">
+                      {service.title}
+                    </h3>
+                    <p class="text-sm text-anime-purple dark:text-anime-cyan mb-2">
+                      {service.description}
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      {service.detail}
+                    </p>
+                  </div>
+                </Card3D>
+              </a>
+            </div>
+          </ParallaxSection>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-anime-purple to-anime-blue relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center">
+        <h2 class="text-4xl font-bold text-white mb-4">
+          アニメ制作の未来を一緒に創りませんか?
+        </h2>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          TOONIQは最新技術でアニメ業界の課題を解決し、
+          クリエイターが創作活動に専念できる環境を実現します
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center px-8 py-4 rounded-full bg-white text-anime-purple font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+        >
+          <Rocket className="mr-2 w-5 h-5" />
+          お問い合わせはこちら
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
