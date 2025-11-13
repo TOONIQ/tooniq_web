@@ -241,30 +241,6 @@ export default function LoadingScreen() {
               </motion.div>
             </motion.div>
 
-            {/* プログレスバーとパーセンテージ */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.6 }}
-              className="mt-6 w-64 space-y-2"
-            >
-              {/* パーセンテージ表示 */}
-              <div className="flex justify-between items-center text-xs text-blue-300/80 font-medium">
-                <span>Loading...</span>
-                <span>{Math.min(Math.round(progress), 100)}%</span>
-              </div>
-
-              {/* プログレスバー */}
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full shadow-lg shadow-blue-500/50"
-                  style={{ width: `${Math.min(progress, 100)}%` }}
-                  initial={{ width: '0%' }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                />
-              </div>
-            </motion.div>
-
             {/* 装飾的なパーティクル（改善版） */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               {[...Array(12)].map((_, i) => (
