@@ -12,7 +12,6 @@ import Footer from '@/components/common/Footer.astro';
 import ThemeProvider from '@/components/react/ThemeProvider';
 import LoadingScreen from '@/components/react/LoadingScreen';
 import ParticleBackground from '@/components/react/ParticleBackground';
-import SmoothScroll from '@/components/react/SmoothScroll';
 
 // ページ情報の型定義
 interface Props {
@@ -76,24 +75,21 @@ const fullTitle = title === 'TOONIQ' ? title : `${title} | TOONIQ`;
       <!-- ローディング画面 -->
       <LoadingScreen client:only="react" />
 
-      <!-- スムーススクロール -->
-      <SmoothScroll client:only="react">
-        <!-- パーティクル背景 -->
-        <ParticleBackground client:only="react" />
+      <!-- パーティクル背景 -->
+      <ParticleBackground client:only="react" />
 
-        <div class="min-h-screen flex flex-col relative">
-          <!-- ヘッダー -->
-          <Header />
+      <div class="min-h-screen flex flex-col relative">
+        <!-- ヘッダー -->
+        <Header />
 
-          <!-- メインコンテンツ -->
-          <main class="flex-grow">
-            <slot />
-          </main>
+        <!-- メインコンテンツ -->
+        <main class="flex-grow">
+          <slot />
+        </main>
 
-          <!-- フッター -->
-          <Footer />
-        </div>
-      </SmoothScroll>
+        <!-- フッター -->
+        <Footer />
+      </div>
     </ThemeProvider>
 
     <!-- スムーズスクロール用のスクリプト -->
