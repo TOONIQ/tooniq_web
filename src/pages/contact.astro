@@ -95,9 +95,16 @@ const faqs = [
        セクション1: ヒーローセクション
        ページの第一印象を決定する重要なセクション
        ============================================ -->
-  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-    <!-- 背景グラデーション -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-indigo-900/10 to-cyan-900/20" aria-hidden="true"></div>
+  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- 背景画像 -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/contact-bg.jpg"
+        alt="お問い合わせ"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-purple-900/70 to-slate-900/80"></div>
+    </div>
 
     <!-- 背景アニメーション: 動的なBlobエフェクト -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -110,13 +117,13 @@ const faqs = [
       <div class="text-center">
         <!-- メインタイトル -->
         <h1 class="mb-6 text-5xl font-bold">
-          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-lg">
             お問い合わせ
           </span>
         </h1>
 
         <!-- サブタイトル -->
-        <p class="text-xl text-slate-200">
+        <p class="text-xl text-slate-200 drop-shadow-md">
           お気軽にお問い合わせください
         </p>
       </div>

@@ -128,7 +128,15 @@ const works = [
 const testimonials = [
   {
     quote: 'TOONIQのシステムのおかげで、制作進行の効率が劇的に改善しました。特にAnimaTimeは直感的で使いやすく、チーム全体のコミュニケーションが円滑になりました。',
-    author: '大学アニメ制作サークル代表'
+    author: '大学アニメ制作サークル代表',
+    avatar: '/images/avatar-1.jpg',
+    role: 'プロジェクトマネージャー'
+  },
+  {
+    quote: '複数の大学が参加する大規模プロジェクトでも、TOONIQの管理システムのおかげでスムーズに進行できました。技術サポートも迅速で助かりました。',
+    author: '学園祭実行委員会',
+    avatar: '/images/avatar-2.jpg',
+    role: '企画担当'
   }
 ];
 ---
@@ -138,9 +146,16 @@ const testimonials = [
        セクション1: ヒーローセクション
        ページの第一印象を決定する重要なセクション
        ============================================ -->
-  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-    <!-- 背景グラデーション -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-indigo-900/10 to-cyan-900/20" aria-hidden="true"></div>
+  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- 背景画像 -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/work-1.jpg"
+        alt="実績紹介"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-purple-900/70 to-slate-900/80"></div>
+    </div>
 
     <!-- 背景アニメーション: 動的なBlobエフェクト -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -154,13 +169,13 @@ const testimonials = [
       <div class="text-center">
         <!-- メインタイトル -->
         <h1 class="mb-6 text-5xl font-bold">
-          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-lg">
             実績紹介
           </span>
         </h1>
 
         <!-- サブタイトル -->
-        <p class="text-xl text-slate-200">
+        <p class="text-xl text-slate-200 drop-shadow-md">
           TOONIQが手がけたプロジェクトと成果
         </p>
       </div>
@@ -326,25 +341,42 @@ const testimonials = [
   <ParallaxSection client:load offset={60}>
     <section class="bg-slate-50 py-24 dark:bg-slate-900">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
+        <div class="max-w-4xl mx-auto">
           {/* セクションヘッダー */}
-          <h2 class="text-3xl font-bold mb-12 text-slate-900 dark:text-slate-100">
+          <h2 class="text-3xl font-bold mb-12 text-center text-slate-900 dark:text-slate-100">
             <span class="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">パートナーの声</span>
           </h2>
 
           {/* お客様の声カード */}
-          {testimonials.map((testimonial) => (
-            <Card3D client:load>
-              <div class="p-8">
-                <blockquote class="text-lg italic text-slate-700 dark:text-slate-300 mb-4">
-                  "{testimonial.quote}"
-                </blockquote>
-                <p class="text-sm text-slate-600 dark:text-slate-400">
-                  - {testimonial.author}
-                </p>
-              </div>
-            </Card3D>
-          ))}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card3D client:load>
+                <div class="p-8">
+                  {/* アバター */}
+                  <div class="flex items-center mb-6">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.author}
+                      class="w-16 h-16 rounded-full object-cover mr-4 ring-4 ring-purple-500/20"
+                    />
+                    <div class="text-left">
+                      <p class="font-semibold text-slate-900 dark:text-slate-100">
+                        {testimonial.author}
+                      </p>
+                      <p class="text-sm text-slate-600 dark:text-slate-400">
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 引用 */}
+                  <blockquote class="text-base italic text-slate-700 dark:text-slate-300">
+                    "{testimonial.quote}"
+                  </blockquote>
+                </div>
+              </Card3D>
+            ))}
+          </div>
         </div>
       </div>
     </section>
