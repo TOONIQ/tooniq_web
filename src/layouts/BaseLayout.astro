@@ -44,6 +44,32 @@ const fullTitle = title === 'TOONIQ' ? title : `${title} | TOONIQ`;
       }
     </script>
 
+    <!-- スプラッシュスクリーン初期表示制御（FOUC防止） -->
+    <script is:inline>
+      // 初回訪問時のみコンテンツを隠す（即座に実行）
+      (function() {
+        if (!sessionStorage.getItem('tooniq-has-visited')) {
+          document.documentElement.style.setProperty('--splash-display', 'block');
+        }
+      })();
+    </script>
+
+    <style is:inline>
+      /* スプラッシュスクリーン用の初期スタイル */
+      :root {
+        --splash-display: none;
+      }
+
+      /* 初回訪問時にコンテンツを隠す */
+      body.splash-active {
+        overflow: hidden;
+      }
+
+      body.splash-active > *:not(#splash-screen-wrapper) {
+        visibility: hidden;
+      }
+    </style>
+
     <!-- 基本メタタグ -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,8 +103,17 @@ const fullTitle = title === 'TOONIQ' ? title : `${title} | TOONIQ`;
   </head>
 
   <body class="antialiased">
+    <!-- 初回訪問時にbodyにsplash-activeクラスを追加 -->
+    <script is:inline>
+      if (!sessionStorage.getItem('tooniq-has-visited')) {
+        document.body.classList.add('splash-active');
+      }
+    </script>
+
     <!-- スプラッシュスクリーン（初回訪問時のみ） -->
-    <LoadingScreen client:only="react" />
+    <div id="splash-screen-wrapper">
+      <LoadingScreen client:only="react" />
+    </div>
 
     <!-- テーマプロバイダー（ダークモード対応） -->
     <ThemeProvider client:load>

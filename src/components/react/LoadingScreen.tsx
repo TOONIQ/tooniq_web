@@ -52,6 +52,8 @@ export default function LoadingScreen() {
         setTimeout(() => {
           setIsLoading(false)
           document.documentElement.style.overflow = ''
+          // splash-activeクラスを削除してコンテンツを表示
+          document.body.classList.remove('splash-active')
         }, 500)
       } else {
         setProgress(currentProgress)
@@ -62,8 +64,16 @@ export default function LoadingScreen() {
     return () => {
       clearInterval(interval)
       document.documentElement.style.overflow = ''
+      document.body.classList.remove('splash-active')
     }
   }, [])
+
+  // 2回目以降の訪問時に即座にsplash-activeクラスを削除
+  useEffect(() => {
+    if (!isLoading) {
+      document.body.classList.remove('splash-active')
+    }
+  }, [isLoading])
 
   return (
     <AnimatePresence>
