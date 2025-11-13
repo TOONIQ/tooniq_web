@@ -51,33 +51,11 @@ export default function GlowingText({
       style={{ zIndex: 1 }}
     >
       {/* ============================================
-          グローエフェクトレイヤー
+          テキスト表示（シンプル）
           ============================================ */}
-      <div className="absolute inset-0 animate-pulse" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 blur-3xl opacity-30" />
-      </div>
-
-      {/* ============================================
-          グラデーションテキスト（アニメーション付き）
-          ============================================ */}
-      <motion.div
-        className="relative"
-        animate={{
-          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        style={{
-          backgroundSize: '200% 200%',
-        }}
-      >
-        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.5)' }}>
-          {children}
-        </h1>
-      </motion.div>
+      <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white">
+        {children}
+      </h1>
 
       {/* ============================================
           パーティクルエフェクト
