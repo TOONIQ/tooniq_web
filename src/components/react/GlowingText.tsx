@@ -54,7 +54,7 @@ export default function GlowingText({
           グローエフェクトレイヤー
           ============================================ */}
       <div className="absolute inset-0 animate-pulse" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-r from-anime-blue via-anime-blue to-anime-blue blur-3xl opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 blur-3xl opacity-30" />
       </div>
 
       {/* ============================================

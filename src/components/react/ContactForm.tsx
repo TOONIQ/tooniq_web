@@ -161,7 +161,7 @@ export default function ContactForm() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors"
               />
               <User className="absolute left-3 top-3.5 w-4 h-4 text-gray-400" />
             </div>
@@ -179,7 +179,7 @@ export default function ContactForm() {
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors"
               />
               <Building className="absolute left-3 top-3.5 w-4 h-4 text-gray-400" />
             </div>
@@ -201,7 +201,7 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors"
               />
               <Mail className="absolute left-3 top-3.5 w-4 h-4 text-gray-400" />
             </div>
@@ -219,7 +219,7 @@ export default function ContactForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors"
               />
               <Phone className="absolute left-3 top-3.5 w-4 h-4 text-gray-400" />
             </div>
@@ -237,7 +237,7 @@ export default function ContactForm() {
             value={formData.category}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors"
           >
             {categories.map((cat) => (
               <option key={cat.value} value={cat.value}>
@@ -260,7 +260,7 @@ export default function ContactForm() {
               onChange={handleInputChange}
               required
               rows={6}
-              className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-cyan-500 focus:outline-none transition-colors resize-none"
+              className="w-full px-4 py-3 pl-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 focus:border-blue-600 dark:focus:border-blue-500 focus:outline-none transition-colors resize-none"
             />
             <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
           </div>
@@ -279,7 +279,7 @@ export default function ContactForm() {
             className={`inline-flex items-center px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
               isSubmitting
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-xl'
+                : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-xl'
             }`}
           >
             {isSubmitting ? (

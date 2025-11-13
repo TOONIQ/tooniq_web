@@ -119,9 +119,9 @@ export default function Card3D({ children, className = '' }: Card3DProps) {
         style={{
           background: `linear-gradient(105deg,
             transparent 40%,
-            rgba(139, 92, 246, 0.4) 45%,
-            rgba(59, 130, 246, 0.3) 50%,
-            rgba(236, 72, 153, 0.4) 55%,
+            rgba(27, 143, 191, 0.4) 45%,
+            rgba(45, 169, 216, 0.3) 50%,
+            rgba(82, 187, 219, 0.4) 55%,
             transparent 60%)`,
           transform: 'translateZ(2px)',
         }}
@@ -134,7 +134,7 @@ export default function Card3D({ children, className = '' }: Card3DProps) {
       <div
         className="absolute -inset-1 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 blur-xl"
         style={{
-          background: 'linear-gradient(to right, #8B5CF6, #3B82F6, #EC4899)',
+          background: 'linear-gradient(to right, #1B8FBF, #2DA9D8, #52BBDB)',
           transform: 'translateZ(-1px)',
         }}
         aria-hidden="true"
@@ -148,7 +148,7 @@ export default function Card3D({ children, className = '' }: Card3DProps) {
         style={{
           transform: 'translateZ(0)',
           boxShadow: isHovered
-            ? '0 20px 40px rgba(139, 92, 246, 0.3), 0 15px 12px rgba(139, 92, 246, 0.1)'
+            ? '0 20px 40px rgba(27, 143, 191, 0.3), 0 15px 12px rgba(27, 143, 191, 0.1)'
             : '0 10px 20px rgba(0, 0, 0, 0.1)',
         }}
       >
