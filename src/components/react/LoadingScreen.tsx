@@ -94,8 +94,53 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="fixed inset-0 z-[10000] bg-gradient-to-br from-slate-900 via-blue-900 to-slate-950 flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[10000] flex items-center justify-center overflow-hidden"
+          style={{
+            background: 'radial-gradient(ellipse at center, #1e3a8a 0%, #0f172a 50%, #020617 100%)'
+          }}
         >
+          {/* 動的な背景グラデーション */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              background: [
+                'radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)',
+                'radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)',
+                'radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)',
+              ]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          {/* グローイングオーブ（左上） */}
+          <motion.div
+            className="absolute w-96 h-96 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+              filter: 'blur(60px)',
+            }}
+            animate={{
+              x: [-100, -50, -100],
+              y: [-100, -50, -100],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          {/* グローイングオーブ（右下） */}
+          <motion.div
+            className="absolute w-96 h-96 rounded-full right-0 bottom-0"
+            style={{
+              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.25) 0%, transparent 70%)',
+              filter: 'blur(60px)',
+            }}
+            animate={{
+              x: [100, 50, 100],
+              y: [100, 50, 100],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
           <div className="relative flex flex-col items-center justify-center gap-4 text-center px-4">
             {/* サブタイトル: Crafting Anime Tech */}
             <motion.span
@@ -127,40 +172,85 @@ export default function LoadingScreen() {
               The future of Anime, today.
             </motion.p>
 
-            {/* プログレスバー */}
+            {/* モダンなローディングスピナー */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="mt-8 relative"
+            >
+              {/* 外側の回転リング */}
+              <motion.div
+                className="w-16 h-16 rounded-full border-4 border-blue-500/30 border-t-blue-500"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 内側の回転リング（逆回転） */}
+              <motion.div
+                className="absolute inset-2 rounded-full border-4 border-blue-400/20 border-t-blue-400"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 中心の光るドット */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50" />
+              </motion.div>
+            </motion.div>
+
+            {/* プログレスバーとパーセンテージ */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-6 w-32 h-1 bg-white/20 rounded-full overflow-hidden"
+              transition={{ delay: 1, duration: 0.6 }}
+              className="mt-6 w-64 space-y-2"
             >
-              <motion.div
-                className="h-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full"
-                style={{ width: `${Math.min(progress, 100)}%` }}
-                initial={{ width: '0%' }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              />
+              {/* パーセンテージ表示 */}
+              <div className="flex justify-between items-center text-xs text-blue-300/80 font-medium">
+                <span>Loading...</span>
+                <span>{Math.min(Math.round(progress), 100)}%</span>
+              </div>
+
+              {/* プログレスバー */}
+              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full shadow-lg shadow-blue-500/50"
+                  style={{ width: `${Math.min(progress, 100)}%` }}
+                  initial={{ width: '0%' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                />
+              </div>
             </motion.div>
 
-            {/* 装飾的なパーティクル */}
+            {/* 装飾的なパーティクル（改善版） */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-              {[...Array(8)].map((_, i) => (
+              {[...Array(12)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
+                  className="absolute rounded-full"
                   style={{
-                    left: `${20 + i * 10}%`,
-                    top: `${30 + (i % 3) * 20}%`,
+                    width: `${2 + (i % 3)}px`,
+                    height: `${2 + (i % 3)}px`,
+                    left: `${10 + i * 7}%`,
+                    top: `${20 + (i % 4) * 15}%`,
+                    background: `radial-gradient(circle, rgba(59, 130, 246, ${0.6 - i * 0.05}) 0%, transparent 70%)`,
+                    boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
                   }}
                   animate={{
-                    y: [-20, -60, -20],
-                    opacity: [0, 0.8, 0],
+                    y: [-30, -80, -30],
+                    x: [0, (i % 2 ? 20 : -20), 0],
+                    opacity: [0, 1, 0],
                     scale: [0.5, 1.5, 0.5],
                   }}
                   transition={{
-                    duration: 2.5,
+                    duration: 3 + (i % 3),
                     repeat: Infinity,
-                    delay: i * 0.3,
+                    delay: i * 0.2,
                     ease: 'easeInOut',
                   }}
                 />
