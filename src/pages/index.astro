@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import GlowingText from '@/components/react/GlowingText';
-import TypewriterText from '@/components/react/TypewriterText';
 import Card3D from '@/components/react/Card3D';
 import ParallaxSection from '@/components/react/ParallaxSection';
 
@@ -94,12 +93,6 @@ const problems = [
   }
 ];
 
-const heroTexts = [
-  "AIで作業から人を解放",
-  "人間にしかできない感動を",
-  "アニメ制作の未来を創る",
-  "技術で限界を超える"
-];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -138,11 +131,9 @@ const heroTexts = [
         </div>
 
         <div class="mb-12 max-w-3xl mx-auto">
-          <TypewriterText
-            texts={heroTexts}
-            className="text-white drop-shadow-lg"
-            client:load
-          />
+          <p class="text-2xl sm:text-3xl md:text-4xl font-medium text-white drop-shadow-lg">
+            アニメ制作の未来を創る
+          </p>
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-20">
