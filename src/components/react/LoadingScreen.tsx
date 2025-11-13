@@ -172,34 +172,46 @@ export default function LoadingScreen() {
               The future of Anime, today.
             </motion.p>
 
-            {/* モダンなローディングスピナー */}
+            {/* モダンなローディングスピナー（ロゴ統合版） */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-8 relative"
+              className="mt-8 relative w-24 h-24"
             >
               {/* 外側の回転リング */}
               <motion.div
-                className="w-16 h-16 rounded-full border-4 border-blue-500/30 border-t-blue-500"
+                className="absolute inset-0 rounded-full border-4 border-blue-500/30 border-t-blue-500"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
               />
 
               {/* 内側の回転リング（逆回転） */}
               <motion.div
-                className="absolute inset-2 rounded-full border-4 border-blue-400/20 border-t-blue-400"
+                className="absolute inset-3 rounded-full border-4 border-blue-400/20 border-t-blue-400"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* 中心の光るドット */}
+              {/* 中心のロゴシンボル */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                animate={{
+                  scale: [1, 1.05, 1],
+                  opacity: [0.9, 1, 0.9]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50" />
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <img
+                    src="/images/tooniq-logo-symbol.svg"
+                    alt="TOONIQ"
+                    className="w-10 h-10 object-contain"
+                    style={{
+                      filter: 'drop-shadow(0 0 10px rgba(45, 169, 216, 0.8))'
+                    }}
+                  />
+                </div>
               </motion.div>
             </motion.div>
 
