@@ -23,12 +23,24 @@ export default function LoadingScreen() {
 
   const [progress, setProgress] = useState(0)
 
+  // コンポーネントマウント直後に状態を確認
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    // スプラッシュが表示されない場合は即座にクラスを削除
+    if (!isLoading) {
+      document.body.classList.remove('splash-active')
+    }
+  }, [])
+
   useEffect(() => {
     // SSRチェック
     if (typeof window === 'undefined') return
 
     // 既に訪問済みの場合は何もしない
     if (sessionStorage.getItem('tooniq-has-visited')) {
+      // 念のため、クラスを削除
+      document.body.classList.remove('splash-active')
       return
     }
 
