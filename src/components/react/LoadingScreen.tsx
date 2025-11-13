@@ -177,18 +177,18 @@ export default function LoadingScreen() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-8 relative w-24 h-24"
+              className="mt-8 relative w-32 h-32"
             >
               {/* 外側の回転リング */}
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-blue-500/30 border-t-blue-500"
+                className="absolute inset-0 rounded-full border-[5px] border-blue-500/30 border-t-blue-500"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
               />
 
               {/* 内側の回転リング（逆回転） */}
               <motion.div
-                className="absolute inset-3 rounded-full border-4 border-blue-400/20 border-t-blue-400"
+                className="absolute inset-4 rounded-full border-[5px] border-blue-400/20 border-t-blue-400"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               />
@@ -202,10 +202,10 @@ export default function LoadingScreen() {
                 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="w-12 h-12 flex items-center justify-center">
+                <div className="w-16 h-16 flex items-center justify-center">
                   <svg
-                    width="40"
-                    height="40"
+                    width="56"
+                    height="56"
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
