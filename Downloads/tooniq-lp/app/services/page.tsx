@@ -250,7 +250,7 @@ export default function Services() {
         {/* Background Image */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000"
+            src="/images/services-bg.jpg"
             alt="Technology and innovation"
             fill
             className="object-cover opacity-10"

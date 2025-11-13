@@ -104,7 +104,7 @@ export default function Contact() {
         {/* Background Image */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=2000"
+            src="/images/contact-bg.jpg"
             alt="Contact and communication"
             fill
             className="object-cover opacity-10"

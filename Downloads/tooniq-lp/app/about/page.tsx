@@ -71,7 +71,7 @@ export default function About() {
         {/* Background Image */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000"
+            src="/images/team.jpg"
             alt="Team collaboration"
             fill
             className="object-cover opacity-10"
@@ -152,8 +152,8 @@ export default function About() {
                     <div className="w-16 h-16 rounded-full relative overflow-hidden">
                       <Image
                         src={index === 0
-                          ? "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200"
-                          : "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200"}
+                          ? "/images/avatar-1.jpg"
+                          : "/images/avatar-2.jpg"}
                         alt={member.name}
                         fill
                         className="object-cover"

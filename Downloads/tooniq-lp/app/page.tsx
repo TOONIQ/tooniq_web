@@ -101,7 +101,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="https://images.unsplash.com/photo-1635322966219-b75ed372eb01?q=80&w=2000"
+            src="/images/hero-bg.jpg"
             alt="Digital creative workspace"
             fill
             className="object-cover opacity-20 dark:opacity-10"
@@ -247,7 +247,7 @@ export default function Home() {
               <div className="flex-1 flex justify-center">
                 <div className="relative w-96 h-64">
                   <Image
-                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000"
+                    src="/images/work-1.jpg"
                     alt="AI and technology"
                     fill
                     className="object-cover rounded-2xl"

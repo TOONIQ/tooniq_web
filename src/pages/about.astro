@@ -1,0 +1,454 @@
+---
+/**
+ * 会社概要ページ - TOONIQウェブサイト
+ *
+ * 企業情報、チーム、沿革、ビジョンなど企業に関する全情報を提供
+ *
+ * リーダブルコードの原則に従い、各セクションを明確に分離し、
+ * データとビューのロジックを分けて可読性を向上
+ */
+
+// ============================================
+// レイアウトとコンポーネントのインポート
+// ============================================
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Reactコンポーネント（インタラクティブな要素）
+import Card3D from '@/components/react/Card3D';
+import ParallaxSection from '@/components/react/ParallaxSection';
+
+// Lucide Reactアイコン
+import {
+  Users,
+  Rocket,
+  Target,
+  Zap,
+  Sparkles,
+  TrendingUp,
+  ArrowRight
+} from 'lucide-react';
+
+// ============================================
+// ページメタデータ
+// ============================================
+
+const pageTitle = '会社概要';
+const pageDescription = 'TOONIQの企業理念、チーム、そしてアニメ業界の未来への取り組みについて';
+
+// ============================================
+// データ定義: 企業情報
+// ============================================
+
+const companyInfo = {
+  name: '合同会社TOONIQ',
+  tagline: 'The future of Anime, today.',
+  mission: 'AIで「作業」から「人」を解放し、人間にしかできない「感動」を生み出すために、アニメ制作の構造を根本から変える',
+  founded: '2025年',
+  businessContent: 'アニメ制作支援ソフトウェアの開発・提供、技術コンサルティング、カスタム開発',
+  recruitUrl: 'https://tooniq.co.jp/recruit'
+};
+
+// ============================================
+// データ定義: リーダーシップチーム
+// ============================================
+
+const leadership = [
+  {
+    name: '大木天翔',
+    role: 'CEO/COO',
+    description: '東京理科大学理学部第一部物理学科在学。理化学研究所で量子技術研究、東京大学松尾・岩澤研究室でインターンシップ従事',
+    skills: ['量子技術', '経営戦略', 'プロジェクトマネジメント']
+  },
+  {
+    name: '山口優斗',
+    role: 'CTO/AIエンジニア',
+    description: '東京理科大学でAI技術を研究。アニメ制作における最新技術の導入と開発を担当',
+    skills: ['機械学習', 'システム設計', 'AI開発']
+  }
+];
+
+// ============================================
+// データ定義: 企業沿革・実績
+// ============================================
+
+const timeline = [
+  {
+    year: '2025年',
+    icon: Rocket,
+    title: '合同会社TOONIQ設立',
+    description: '東京理科大学の公認サークル「動画研究同好会」で技術面の開発を行っていた2名が起業'
+  },
+  {
+    year: '2024年',
+    icon: Target,
+    title: '全国大学アニメ制作コラボレーション',
+    description: '全国10の大学アニメ制作サークルが集まり、プロの作画監督指導のもと一つのアニメ作品を制作。制作進行や進行管理・Webサイト構築などの技術支援を実施'
+  },
+  {
+    year: '2023年',
+    icon: Zap,
+    title: '学園祭企画支援',
+    description: '大学の学園祭で現代のテレビアニメを昔のアニメ制作の手法で再現する企画を実施。サークルと他企業との間で企画の進行やNDAなどの契約、発注などを担当'
+  }
+];
+
+// ============================================
+// データ定義: 将来ビジョン
+// ============================================
+
+const futureVision = [
+  {
+    icon: Sparkles,
+    title: '独自AIモデルの開発',
+    description: '制作会社と提携して独自のAIモデルの作成（自動中割りや仕上げ、背景や3D素材の生成など）'
+  },
+  {
+    icon: Target,
+    title: 'アニメスタジオの設立',
+    description: '自社でアニメスタジオを持ち、IPを所有'
+  },
+  {
+    icon: TrendingUp,
+    title: '学習データの構築',
+    description: '質の高いアニメの学習データを作成'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- ============================================
+       セクション1: ヘッダーセクション
+       ページタイトルとキャッチコピーを表示
+       ============================================ -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24">
+    <!-- 背景アニメーション: 動的なBlobエフェクト -->
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-purple-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-indigo-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-pink-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h1 class="mb-6 text-5xl font-bold text-white sm:text-6xl md:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+        {companyInfo.name}
+      </h1>
+      <p class="mx-auto max-w-3xl text-2xl font-light tracking-wider text-white/90 sm:text-3xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+        {companyInfo.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       セクション2: ミッションステートメント
+       企業の使命と理念を明確に提示
+       ============================================ -->
+  <ParallaxSection client:load offset={100}>
+    <section class="bg-white py-24 dark:bg-slate-800">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="mb-8 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100">
+            私たちのミッション
+          </h2>
+          <p class="text-2xl leading-relaxed text-slate-700 sm:text-3xl dark:text-slate-200">
+            {companyInfo.mission}
+          </p>
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション3: リーダーシップチーム
+       経営陣とキーパーソンの紹介
+       ============================================ -->
+  <ParallaxSection client:load offset={80}>
+    <section class="bg-slate-50 py-24 dark:bg-slate-900">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- セクションヘッダー -->
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100">
+            リーダーシップチーム
+          </h2>
+          <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+            技術と情熱で、アニメ業界の未来を切り拓くチーム
+          </p>
+        </div>
+
+        <!-- チームメンバーグリッド -->
+        <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
+          {leadership.map((member) => (
+            <Card3D client:load>
+              <div class="p-8">
+                <!-- アバター画像 -->
+                <div class="mb-6 flex justify-center">
+                  <div class="h-32 w-32 rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 p-1">
+                    <img
+                      src={member.name === '大木天翔' ? '/images/avatar-1.jpg' : '/images/avatar-2.jpg'}
+                      alt={member.name}
+                      class="h-full w-full rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <!-- 名前と役職 -->
+                <div class="text-center mb-4">
+                  <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">
+                    {member.name}
+                  </h3>
+                  <p class="text-lg font-medium text-purple-600 dark:text-purple-400">
+                    {member.role}
+                  </p>
+                </div>
+
+                <!-- 経歴 -->
+                <p class="mb-6 text-center text-slate-600 dark:text-slate-300">
+                  {member.description}
+                </p>
+
+                <!-- スキルタグ -->
+                <div class="flex flex-wrap justify-center gap-2">
+                  {member.skills.map((skill) => (
+                    <span class="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Card3D>
+          ))}
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション4: 企業沿革・実績
+       企業の歴史と主要な成果をタイムライン形式で表示
+       ============================================ -->
+  <ParallaxSection client:load offset={60}>
+    <section class="bg-white py-24 dark:bg-slate-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- セクションヘッダー -->
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100">
+            企業沿革・実績
+          </h2>
+          <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+            アニメ業界の未来に向けた私たちの歩み
+          </p>
+        </div>
+
+        <!-- タイムライン -->
+        <div class="relative">
+          <!-- 中央の縦線 -->
+          <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-purple-600 to-indigo-600" aria-hidden="true"></div>
+
+          <!-- タイムラインアイテム -->
+          <div class="space-y-12">
+            {timeline.map((item, index) => (
+              <div class={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                <!-- コンテンツカード -->
+                <div class="w-full md:w-5/12">
+                  <Card3D client:load>
+                    <div class="p-6">
+                      <!-- 年とアイコン -->
+                      <div class="mb-4 flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                          <item.icon className="h-5 w-5 text-white" />
+                        </div>
+                        <span class="text-xl font-bold text-purple-600 dark:text-purple-400">
+                          {item.year}
+                        </span>
+                      </div>
+
+                      <!-- タイトル -->
+                      <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-slate-100">
+                        {item.title}
+                      </h3>
+
+                      <!-- 説明 -->
+                      <p class="text-slate-600 dark:text-slate-300">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Card3D>
+                </div>
+
+                <!-- 中央のドット -->
+                <div class="absolute left-1/2 -translate-x-1/2 hidden md:block">
+                  <div class="h-4 w-4 rounded-full border-4 border-purple-600 bg-white dark:bg-slate-900"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション5: 将来ビジョン
+       企業の長期的な展望と目標
+       ============================================ -->
+  <ParallaxSection client:load offset={50}>
+    <section class="bg-slate-50 py-24 dark:bg-slate-900">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- セクションヘッダー -->
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100">
+            将来ビジョン
+          </h2>
+          <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
+            アニメ業界の未来を創造する私たちの目標
+          </p>
+        </div>
+
+        <!-- ビジョングリッド -->
+        <div class="grid gap-8 md:grid-cols-3">
+          {futureVision.map((vision) => (
+            <Card3D client:load>
+              <div class="p-8 text-center">
+                <!-- アイコン -->
+                <div class="mb-6 flex justify-center">
+                  <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                    <vision.icon className="h-10 w-10 text-white" />
+                  </div>
+                </div>
+
+                <!-- タイトル -->
+                <h3 class="mb-4 text-xl font-bold text-slate-900 dark:text-slate-100">
+                  {vision.title}
+                </h3>
+
+                <!-- 説明 -->
+                <p class="text-slate-600 dark:text-slate-300">
+                  {vision.description}
+                </p>
+              </div>
+            </Card3D>
+          ))}
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション6: 企業情報
+       会社の基本情報を表形式で表示
+       ============================================ -->
+  <ParallaxSection client:load offset={40}>
+    <section class="bg-white py-24 dark:bg-slate-800">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <!-- セクションヘッダー -->
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-slate-900 sm:text-5xl dark:text-slate-100">
+            企業情報
+          </h2>
+        </div>
+
+        <!-- 企業情報テーブル -->
+        <div class="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-slate-50 dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-900">
+          <div class="grid gap-4 p-6 sm:grid-cols-3">
+            <dt class="font-semibold text-slate-900 dark:text-slate-100">
+              会社名
+            </dt>
+            <dd class="text-slate-700 sm:col-span-2 dark:text-slate-300">
+              {companyInfo.name}
+            </dd>
+          </div>
+          <div class="grid gap-4 p-6 sm:grid-cols-3">
+            <dt class="font-semibold text-slate-900 dark:text-slate-100">
+              設立
+            </dt>
+            <dd class="text-slate-700 sm:col-span-2 dark:text-slate-300">
+              {companyInfo.founded}
+            </dd>
+          </div>
+          <div class="grid gap-4 p-6 sm:grid-cols-3">
+            <dt class="font-semibold text-slate-900 dark:text-slate-100">
+              事業内容
+            </dt>
+            <dd class="text-slate-700 sm:col-span-2 dark:text-slate-300">
+              {companyInfo.businessContent}
+            </dd>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション7: CTAセクション
+       採用情報とお問い合わせへの誘導
+       ============================================ -->
+  <ParallaxSection client:load offset={30}>
+    <section class="bg-slate-50 py-24 dark:bg-slate-900">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 class="mb-6 text-4xl font-bold text-slate-900 dark:text-slate-100">
+          一緒にアニメの未来を創りませんか?
+        </h2>
+        <p class="mb-12 text-xl text-slate-600 dark:text-slate-300">
+          私たちのビジョンに共感する仲間を募集しています
+        </p>
+
+        <!-- CTAボタン -->
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href={companyInfo.recruitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-10 py-5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+          >
+            採用情報を見る
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" client:load />
+          </a>
+
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-purple-600 bg-transparent px-10 py-5 text-lg font-semibold text-purple-600 transition-all duration-300 hover:scale-105 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-400 dark:hover:text-white"
+          >
+            お問い合わせ
+          </a>
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+</BaseLayout>
+
+<!-- ============================================
+     カスタムスタイル
+     アニメーションとエフェクトの定義
+     ============================================ -->
+<style>
+  /* Blobアニメーション: 背景の有機的な動き */
+  @keyframes blob {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* スムーズスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

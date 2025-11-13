@@ -1,0 +1,417 @@
+---
+/**
+ * 実績紹介ページ - TOONIQウェブサイト
+ *
+ * TOONIQが手がけたプロジェクトと成果を紹介
+ * 統計情報、プロジェクト詳細、お客様の声を表示
+ *
+ * リーダブルコードの原則に従い、各セクションを明確に分離し、
+ * データとビューのロジックを分けて可読性を向上
+ */
+
+// ============================================
+// レイアウトとコンポーネントのインポート
+// ============================================
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Reactコンポーネント（インタラクティブな要素）
+import Card3D from '@/components/react/Card3D';
+import ParallaxSection from '@/components/react/ParallaxSection';
+
+// Lucide Reactアイコン
+import {
+  Users,
+  Film,
+  Award,
+  Calendar,
+  Briefcase,
+  FileCheck,
+  Lightbulb,
+  Target,
+  Sparkles,
+  ArrowRight
+} from 'lucide-react';
+
+// ============================================
+// ページメタデータ
+// ============================================
+
+const pageTitle = '実績紹介';
+const pageDescription = 'TOONIQが手がけたプロジェクトと成果をご紹介します。アニメ制作の課題解決に向けた実績をご覧ください。';
+
+// ============================================
+// データ定義: 実績統計
+// ============================================
+
+const stats = [
+  { label: 'プロジェクト完了', value: '15+', icon: Award },
+  { label: '協力企業・団体', value: '20+', icon: Users },
+  { label: '参加クリエイター', value: '500+', icon: Sparkles },
+  { label: '効率化達成率', value: '40%', icon: Target }
+];
+
+// ============================================
+// データ定義: プロジェクト実績
+// ============================================
+
+const works = [
+  {
+    title: '全国大学アニメ制作連携プロジェクト',
+    category: 'プロジェクト管理',
+    period: '2024年',
+    client: '全国10大学アニメ制作サークル',
+    description: '全国10の大学アニメ制作サークルが集まり、プロの作画監督指導のもと一つのアニメ作品を制作',
+    achievements: [
+      '制作進行システムの構築と運用',
+      '進行管理の効率化により納期を2週間短縮',
+      'Webサイト構築による情報共有の円滑化',
+      '10大学間のコミュニケーション基盤確立'
+    ],
+    technologies: ['AnimaTime', 'Web開発', 'プロジェクト管理'],
+    impact: {
+      participants: '200名以上',
+      deliveryTime: '予定より2週間早く完成',
+      satisfaction: '参加者満足度95%'
+    },
+    icon: Users,
+    gradient: 'from-purple-600 to-indigo-600'
+  },
+  {
+    title: 'レトロアニメ制作企画',
+    category: '企画・技術支援',
+    period: '2023年',
+    client: '大学学園祭実行委員会',
+    description: '現代のテレビアニメを昔のアニメ制作の手法で再現する企画を実施',
+    achievements: [
+      'サークルと他企業との間で企画進行を担当',
+      'NDA等の契約書作成と交渉',
+      '制作工程の技術的アドバイス',
+      '発注管理と予算調整'
+    ],
+    technologies: ['契約管理', '企画進行', '技術コンサルティング'],
+    impact: {
+      visitors: '5,000名以上が来場',
+      mediaAttention: '複数メディアで紹介',
+      collaboration: '3社との協業実現'
+    },
+    icon: Film,
+    gradient: 'from-indigo-600 to-cyan-600'
+  },
+  {
+    title: '制作管理システム開発',
+    category: 'システム開発',
+    period: '2025年〜',
+    client: '複数のアニメ制作会社',
+    description: '各社の既存システムと連携する制作管理システムのカスタム開発',
+    achievements: [
+      '既存Excel運用から脱却',
+      'クラウド化による在宅勤務対応',
+      'リアルタイム進捗共有の実現',
+      '自動レポート生成機能の実装'
+    ],
+    technologies: ['クラウド開発', 'API連携', 'データ分析'],
+    impact: {
+      efficiency: '作業効率40%向上',
+      errorReduction: 'ヒューマンエラー80%削減',
+      timeReduction: 'レポート作成時間90%削減'
+    },
+    icon: Briefcase,
+    gradient: 'from-cyan-600 to-purple-600'
+  }
+];
+
+// ============================================
+// データ定義: お客様の声
+// ============================================
+
+const testimonials = [
+  {
+    quote: 'TOONIQのシステムのおかげで、制作進行の効率が劇的に改善しました。特にAnimaTimeは直感的で使いやすく、チーム全体のコミュニケーションが円滑になりました。',
+    author: '大学アニメ制作サークル代表'
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- ============================================
+       セクション1: ヒーローセクション
+       ページの第一印象を決定する重要なセクション
+       ============================================ -->
+  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <!-- 背景グラデーション -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-indigo-900/10 to-cyan-900/20" aria-hidden="true"></div>
+
+    <!-- 背景アニメーション: 動的なBlobエフェクト -->
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-purple-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-indigo-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-cyan-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+    </div>
+
+    <!-- ヒーローコンテンツ -->
+    <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <!-- メインタイトル -->
+        <h1 class="mb-6 text-5xl font-bold">
+          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            実績紹介
+          </span>
+        </h1>
+
+        <!-- サブタイトル -->
+        <p class="text-xl text-slate-200">
+          TOONIQが手がけたプロジェクトと成果
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       セクション2: 実績統計
+       数値で見るTOONIQの実績
+       ============================================ -->
+  <ParallaxSection client:load offset={100}>
+    <section class="bg-slate-50 py-12 dark:bg-slate-900">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <!-- アイコン -->
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 mb-3">
+                <stat.icon className="w-6 h-6 text-white" />
+              </div>
+
+              <!-- 数値 -->
+              <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-1">
+                {stat.value}
+              </div>
+
+              <!-- ラベル -->
+              <div class="text-sm text-slate-600 dark:text-slate-400">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション3: プロジェクト実績
+       個別のプロジェクトを詳細に紹介
+       ============================================ -->
+  <ParallaxSection client:load offset={80}>
+    <section class="bg-white py-24 dark:bg-slate-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="space-y-16">
+          {works.map((work, index) => (
+            <div class="max-w-6xl mx-auto">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- プロジェクト概要 -->
+                <div class="lg:col-span-1">
+                  {/* アイコンヘッダー */}
+                  <div class="mb-6">
+                    <div class={`inline-flex p-4 rounded-xl bg-gradient-to-r ${work.gradient}`}>
+                      <work.icon className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+
+                  {/* タイトル */}
+                  <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
+                    {work.title}
+                  </h3>
+
+                  {/* メタ情報 */}
+                  <div class="space-y-2 text-sm text-slate-600 dark:text-slate-400 mb-6">
+                    <div class="flex items-center space-x-2">
+                      <Briefcase className="w-4 h-4" />
+                      <span>{work.category}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{work.period}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <Users className="w-4 h-4" />
+                      <span>{work.client}</span>
+                    </div>
+                  </div>
+
+                  {/* 技術タグ */}
+                  <div class="flex flex-wrap gap-2">
+                    {work.technologies.map((tech) => (
+                      <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 rounded-full text-xs font-medium text-purple-700 dark:text-purple-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- プロジェクト詳細 -->
+                <div class="lg:col-span-2 space-y-6">
+                  {/* プロジェクト概要カード */}
+                  <Card3D client:load>
+                    <div class="p-6">
+                      <h4 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-slate-100">
+                        <Lightbulb className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" />
+                        プロジェクト概要
+                      </h4>
+                      <p class="text-slate-600 dark:text-slate-400">
+                        {work.description}
+                      </p>
+                    </div>
+                  </Card3D>
+
+                  {/* 主な実績カード */}
+                  <Card3D client:load>
+                    <div class="p-6">
+                      <h4 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-slate-100">
+                        <FileCheck className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" />
+                        主な実績
+                      </h4>
+                      <ul class="space-y-2">
+                        {work.achievements.map((achievement) => (
+                          <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span class="text-slate-600 dark:text-slate-400">
+                              {achievement}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Card3D>
+
+                  {/* 成果とインパクトカード */}
+                  <Card3D client:load>
+                    <div class="p-6">
+                      <h4 class="font-semibold mb-3 flex items-center text-slate-900 dark:text-slate-100">
+                        <Target className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" />
+                        成果とインパクト
+                      </h4>
+                      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {Object.entries(work.impact).map(([key, value]) => (
+                          <div class="text-center">
+                            <div class="text-xl font-bold text-purple-600 dark:text-cyan-500">
+                              {value}
+                            </div>
+                            <div class="text-xs text-slate-600 dark:text-slate-400 capitalize mt-1">
+                              {key.replace(/([A-Z])/g, ' $1').trim()}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Card3D>
+                </div>
+              </div>
+
+              {/* 区切り線（最後の項目以外） */}
+              {index < works.length - 1 && (
+                <div class="mt-16 border-t border-slate-200 dark:border-slate-700"></div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション4: お客様の声
+       パートナー企業からのフィードバック
+       ============================================ -->
+  <ParallaxSection client:load offset={60}>
+    <section class="bg-slate-50 py-24 dark:bg-slate-900">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          {/* セクションヘッダー */}
+          <h2 class="text-3xl font-bold mb-12 text-slate-900 dark:text-slate-100">
+            <span class="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">パートナーの声</span>
+          </h2>
+
+          {/* お客様の声カード */}
+          {testimonials.map((testimonial) => (
+            <Card3D client:load>
+              <div class="p-8">
+                <blockquote class="text-lg italic text-slate-700 dark:text-slate-300 mb-4">
+                  "{testimonial.quote}"
+                </blockquote>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                  - {testimonial.author}
+                </p>
+              </div>
+            </Card3D>
+          ))}
+        </div>
+      </div>
+    </section>
+  </ParallaxSection>
+
+  <!-- ============================================
+       セクション5: CTA（行動喚起）
+       お問い合わせへの誘導
+       ============================================ -->
+  <ParallaxSection client:load offset={40}>
+    <section class="relative py-24 overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600">
+      <!-- 背景オーバーレイ -->
+      <div class="absolute inset-0 bg-black/20" aria-hidden="true"></div>
+
+      <!-- CTAコンテンツ -->
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          あなたのプロジェクトもサポートします
+        </h2>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          アニメ制作の課題を一緒に解決しましょう
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-purple-900 font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+        >
+          プロジェクトについて相談する
+          <ArrowRight className="w-5 h-5" />
+        </a>
+      </div>
+    </section>
+  </ParallaxSection>
+</BaseLayout>
+
+<!-- ============================================
+     カスタムスタイル
+     アニメーションとエフェクトの定義
+     ============================================ -->
+<style>
+  /* Blobアニメーション: 背景の有機的な動き */
+  @keyframes blob {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* スムーズスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
