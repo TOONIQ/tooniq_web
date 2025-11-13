@@ -12,7 +12,6 @@ import Footer from '@/components/common/Footer.astro';
 import ThemeProvider from '@/components/react/ThemeProvider';
 import LoadingScreen from '@/components/react/LoadingScreen';
 import ParticleBackground from '@/components/react/ParticleBackground';
-import CustomCursor from '@/components/react/CustomCursor';
 import SmoothScroll from '@/components/react/SmoothScroll';
 
 // ページ情報の型定義
@@ -81,9 +80,6 @@ const fullTitle = title === 'TOONIQ' ? title : `${title} | TOONIQ`;
       <SmoothScroll client:only="react">
         <!-- パーティクル背景 -->
         <ParticleBackground client:only="react" />
-
-        <!-- カスタムカーソル -->
-        <CustomCursor client:only="react" />
 
         <div class="min-h-screen flex flex-col relative">
           <!-- ヘッダー -->
