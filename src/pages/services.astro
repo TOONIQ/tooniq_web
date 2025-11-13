@@ -55,7 +55,7 @@ const services = [
       '一斉メール機能',
       '進捗データの集約'
     ],
-    gradient: 'from-purple-600 to-indigo-600'
+    gradient: 'from-blue-600 to-blue-700'
   },
   {
     id: 'consultant',
@@ -68,7 +68,7 @@ const services = [
       '設定や使い方講習の開催',
       '導入前からのトラブル対応'
     ],
-    gradient: 'from-amber-500 to-orange-600'
+    gradient: 'from-blue-500 to-blue-600'
   },
   {
     id: 'chatbot',
@@ -81,7 +81,7 @@ const services = [
       '独自開発で外部流出なし',
       '社内ナレッジの即座な検索'
     ],
-    gradient: 'from-green-500 to-emerald-600'
+    gradient: 'from-blue-600 to-blue-500'
   },
   {
     id: 'meeting-tool',
@@ -94,7 +94,7 @@ const services = [
       '書き起こしと要約の自動生成',
       'AnimaTimeとの連携'
     ],
-    gradient: 'from-blue-500 to-cyan-600'
+    gradient: 'from-blue-500 to-blue-700'
   },
   {
     id: 'custom-dev',
@@ -106,7 +106,7 @@ const services = [
       '既存システムとの統合',
       'ソフトウェアプラグイン開発'
     ],
-    gradient: 'from-pink-500 to-rose-600'
+    gradient: 'from-blue-600 to-blue-700'
   },
   {
     id: 'web-dev',
@@ -118,7 +118,7 @@ const services = [
       'HPや特設ページの作成・管理',
       'アクセス解析レポートの定期報告'
     ],
-    gradient: 'from-violet-500 to-purple-600'
+    gradient: 'from-blue-500 to-blue-700'
   }
 ];
 
@@ -141,12 +141,12 @@ const animaTimeFeatures = [
        セクション1: ヘッダーセクション
        ページタイトルとキャッチコピーを表示
        ============================================ -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24">
+  <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-800 to-slate-900 py-24">
     <!-- 背景アニメーション: 動的なBlobエフェクト -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-purple-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
-      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-indigo-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
-      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-pink-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-blue-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-blue-600 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-blue-700 opacity-20 mix-blend-multiply blur-3xl filter"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
@@ -168,7 +168,7 @@ const animaTimeFeatures = [
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!-- セクションヘッダー -->
         <div class="mb-16 text-center">
-          <h2 class="mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl dark:from-purple-400 dark:to-indigo-400">
+          <h2 class="mb-4 bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl dark:from-blue-400 dark:to-blue-700">
             提供サービス
           </h2>
           <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-300">
@@ -203,7 +203,7 @@ const animaTimeFeatures = [
                 <ul class="space-y-2">
                   {service.features.map((feature) => (
                     <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-                      <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-purple-600 dark:bg-purple-400"></span>
+                      <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
                       {feature}
                     </li>
                   ))}
@@ -223,7 +223,7 @@ const animaTimeFeatures = [
   <ParallaxSection client:load offset={80}>
     <section class="bg-white py-24 dark:bg-slate-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600 to-indigo-600 p-12 shadow-2xl">
+        <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-12 shadow-2xl">
           <div class="grid gap-12 lg:grid-cols-2">
             <!-- 左側: テキストコンテンツ -->
             <div class="text-white">
@@ -255,7 +255,7 @@ const animaTimeFeatures = [
               <div class="mt-8">
                 <a
                   href="/contact"
-                  class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-purple-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 >
                   詳細を問い合わせる
                   <ArrowRight className="h-5 w-5" client:load />
@@ -317,7 +317,7 @@ const animaTimeFeatures = [
           <Card3D client:load>
             <div class="p-8 text-center">
               <div class="mb-6 flex justify-center">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                   <span class="text-3xl">🎬</span>
                 </div>
               </div>
@@ -333,7 +333,7 @@ const animaTimeFeatures = [
           <Card3D client:load>
             <div class="p-8 text-center">
               <div class="mb-6 flex justify-center">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                   <span class="text-3xl">🤖</span>
                 </div>
               </div>
@@ -349,7 +349,7 @@ const animaTimeFeatures = [
           <Card3D client:load>
             <div class="p-8 text-center">
               <div class="mb-6 flex justify-center">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                   <span class="text-3xl">🔒</span>
                 </div>
               </div>
@@ -371,7 +371,7 @@ const animaTimeFeatures = [
        お問い合わせへの誘導
        ============================================ -->
   <ParallaxSection client:load offset={40}>
-    <section class="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24">
+    <section class="bg-gradient-to-br from-slate-900 via-blue-800 to-slate-900 py-24">
       <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 class="mb-6 text-4xl font-bold text-white">
           まずはお気軽にご相談ください
@@ -384,7 +384,7 @@ const animaTimeFeatures = [
         <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="/contact"
-            class="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-10 py-5 text-lg font-semibold text-purple-900 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-10 py-5 text-lg font-semibold text-blue-900 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
           >
             お問い合わせ
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" client:load />

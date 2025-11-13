@@ -5,11 +5,40 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // TOONIQブランドカラー
-        'anime-purple': '#8B5CF6',
-        'anime-blue': '#3B82F6',
-        'anime-pink': '#EC4899',
-        'anime-cyan': '#06B6D4',
+        // TOONIQブランドカラー - Blue系
+        brand: {
+          blue: '#2DA9D8',
+          DEFAULT: '#2DA9D8',
+        },
+        blue: {
+          50: '#F0F9FC',
+          100: '#E0F3F9',
+          200: '#C1E7F3',
+          300: '#8DD4E8',
+          400: '#52BBDB',
+          500: '#2DA9D8',
+          600: '#1B8FBF',
+          700: '#15739A',
+          800: '#105A78',
+          900: '#0C4459',
+        },
+        neutral: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+          700: '#4B5563',
+          800: '#3E4248',
+          900: '#1E293B',
+        },
+        charcoal: {
+          800: '#2C3338',
+          900: '#1A1F24',
+        },
+        surface: '#FFFFFF',
         // ダークモードカラー
         'dark-bg': '#0F0F0F',
         'dark-card': '#1A1A1A',

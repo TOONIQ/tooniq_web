@@ -14,7 +14,8 @@ import {
   Mail,
   Phone,
   MessageSquare,
-  CheckCircle
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 
 // ============================================

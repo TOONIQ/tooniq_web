@@ -20,6 +20,7 @@ import ParallaxSection from '@/components/react/ParallaxSection';
 
 // Lucide Reactアイコン
 import {
+  Users,
   Rocket,
   Target,
   Zap,
@@ -120,12 +121,12 @@ const futureVision = [
        セクション1: ヘッダーセクション
        ページタイトルとキャッチコピーを表示
        ============================================ -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 py-24">
+  <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-800 to-slate-900 py-24">
     <!-- 背景アニメーション: 動的なBlobエフェクト -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-purple-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
-      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-indigo-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
-      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-pink-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-blue-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-blue-600 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -bottom-8 left-20 h-72 w-72 animate-blob animation-delay-4000 rounded-full bg-blue-700 opacity-20 mix-blend-multiply blur-3xl filter"></div>
     </div>
 
     <div class="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
@@ -181,7 +182,7 @@ const futureVision = [
               <div class="p-8">
                 <!-- アバター画像 -->
                 <div class="mb-6 flex justify-center">
-                  <div class="h-32 w-32 rounded-full bg-gradient-to-br from-purple-400 to-indigo-600 p-1">
+                  <div class="h-32 w-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 p-1">
                     <img
                       src={member.name === '大木天翔' ? '/images/avatar-1.jpg' : '/images/avatar-2.jpg'}
                       alt={member.name}
@@ -195,7 +196,7 @@ const futureVision = [
                   <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">
                     {member.name}
                   </h3>
-                  <p class="text-lg font-medium text-purple-600 dark:text-purple-400">
+                  <p class="text-lg font-medium text-blue-600 dark:text-blue-400">
                     {member.role}
                   </p>
                 </div>
@@ -208,7 +209,7 @@ const futureVision = [
                 <!-- スキルタグ -->
                 <div class="flex flex-wrap justify-center gap-2">
                   {member.skills.map((skill) => (
-                    <span class="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                    <span class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
                       {skill}
                     </span>
                   ))}
@@ -241,7 +242,7 @@ const futureVision = [
         <!-- タイムライン -->
         <div class="relative">
           <!-- 中央の縦線 -->
-          <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-purple-600 to-indigo-600" aria-hidden="true"></div>
+          <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-blue-600 to-blue-700" aria-hidden="true"></div>
 
           <!-- タイムラインアイテム -->
           <div class="space-y-12">
@@ -253,10 +254,10 @@ const futureVision = [
                     <div class="p-6">
                       <!-- 年とアイコン -->
                       <div class="mb-4 flex items-center gap-3">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                           <item.icon className="h-5 w-5 text-white" />
                         </div>
-                        <span class="text-xl font-bold text-purple-600 dark:text-purple-400">
+                        <span class="text-xl font-bold text-blue-600 dark:text-blue-400">
                           {item.year}
                         </span>
                       </div>
@@ -276,7 +277,7 @@ const futureVision = [
 
                 <!-- 中央のドット -->
                 <div class="absolute left-1/2 -translate-x-1/2 hidden md:block">
-                  <div class="h-4 w-4 rounded-full border-4 border-purple-600 bg-white dark:bg-slate-900"></div>
+                  <div class="h-4 w-4 rounded-full border-4 border-blue-600 bg-white dark:bg-slate-900"></div>
                 </div>
               </div>
             ))}
@@ -310,7 +311,7 @@ const futureVision = [
               <div class="p-8 text-center">
                 <!-- アイコン -->
                 <div class="mb-6 flex justify-center">
-                  <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-600">
+                  <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                     <vision.icon className="h-10 w-10 text-white" />
                   </div>
                 </div>
@@ -397,7 +398,7 @@ const futureVision = [
             href={companyInfo.recruitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-10 py-5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-10 py-5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
           >
             採用情報を見る
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" client:load />
@@ -405,7 +406,7 @@ const futureVision = [
 
           <a
             href="/contact"
-            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-purple-600 bg-transparent px-10 py-5 text-lg font-semibold text-purple-600 transition-all duration-300 hover:scale-105 hover:bg-purple-600 hover:text-white dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-400 dark:hover:text-white"
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-blue-600 bg-transparent px-10 py-5 text-lg font-semibold text-blue-600 transition-all duration-300 hover:scale-105 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-white"
           >
             お問い合わせ
           </a>

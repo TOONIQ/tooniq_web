@@ -95,35 +95,29 @@ const faqs = [
        セクション1: ヒーローセクション
        ページの第一印象を決定する重要なセクション
        ============================================ -->
-  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-    <!-- 背景画像 -->
-    <div class="absolute inset-0">
-      <img
-        src="/images/contact-bg.jpg"
-        alt="お問い合わせ"
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-purple-900/70 to-slate-900/80"></div>
-    </div>
+  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <!-- 暗いオーバーレイでコントラスト改善 -->
+    <div class="absolute inset-0 bg-slate-900/60" aria-hidden="true"></div>
+
+    <!-- 背景グラデーション -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-blue-600/20" aria-hidden="true"></div>
 
     <!-- 背景アニメーション: 動的なBlobエフェクト -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-purple-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
-      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-indigo-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -left-4 top-0 h-72 w-72 animate-blob rounded-full bg-blue-500 opacity-20 mix-blend-multiply blur-3xl filter"></div>
+      <div class="absolute -right-4 top-0 h-72 w-72 animate-blob animation-delay-2000 rounded-full bg-blue-600 opacity-20 mix-blend-multiply blur-3xl filter"></div>
     </div>
 
     <!-- ヒーローコンテンツ -->
-    <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 z-10">
       <div class="text-center">
         <!-- メインタイトル -->
-        <h1 class="mb-6 text-5xl font-bold">
-          <span class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-lg">
-            お問い合わせ
-          </span>
+        <h1 class="mb-6 text-5xl font-bold text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.7), 0 0 40px rgba(59,130,246,0.3)">
+          お問い合わせ
         </h1>
 
         <!-- サブタイトル -->
-        <p class="text-xl text-slate-200 drop-shadow-md">
+        <p class="text-xl text-white drop-shadow-lg" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5)">
           お気軽にお問い合わせください
         </p>
       </div>
@@ -149,7 +143,7 @@ const faqs = [
               {contactInfo.map((info) => (
                 <div class="flex items-start space-x-4">
                   <div class="flex-shrink-0">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 flex items-center justify-center">
                       <info.icon className="w-5 h-5 text-white" />
                     </div>
                   </div>
@@ -160,7 +154,7 @@ const faqs = [
                     {info.href ? (
                       <a
                         href={info.href}
-                        class="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-cyan-500 transition-colors"
+                        class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
                       >
                         {info.content}
                       </a>
@@ -177,7 +171,7 @@ const faqs = [
             <!-- お問い合わせについての注意書き -->
             <div class="mt-8 p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
               <h3 class="font-semibold mb-2 flex items-center text-slate-900 dark:text-slate-100">
-                <AlertCircle className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400" />
+                <AlertCircle className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" />
                 お問い合わせについて
               </h3>
               <p class="text-sm text-slate-600 dark:text-slate-400">
@@ -206,7 +200,7 @@ const faqs = [
         <div class="max-w-4xl mx-auto">
           <!-- セクションヘッダー -->
           <h2 class="text-3xl font-bold mb-12 text-center text-slate-900 dark:text-slate-100">
-            よくある<span class="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">ご質問</span>
+            よくある<span class="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">ご質問</span>
           </h2>
 
           <!-- FAQリスト -->

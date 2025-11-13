@@ -48,12 +48,13 @@ export default function GlowingText({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.8 }}
+      style={{ zIndex: 1 }}
     >
       {/* ============================================
           グローエフェクトレイヤー
           ============================================ */}
       <div className="absolute inset-0 animate-pulse" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-r from-anime-purple via-anime-blue to-anime-cyan blur-3xl opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-anime-blue via-anime-blue to-anime-blue blur-3xl opacity-30" />
       </div>
 
       {/* ============================================
@@ -73,7 +74,7 @@ export default function GlowingText({
           backgroundSize: '200% 200%',
         }}
       >
-        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-white via-anime-purple to-anime-cyan bg-clip-text text-transparent">
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.5)' }}>
           {children}
         </h1>
       </motion.div>

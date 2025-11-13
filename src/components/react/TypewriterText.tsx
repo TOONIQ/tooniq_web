@@ -99,14 +99,14 @@ export default function TypewriterText({
   // ============================================
 
   return (
-    <div className={`relative inline-block ${className}`}>
-      <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+    <div className={`relative inline-block ${className}`} style={{ zIndex: 1 }}>
+      <span className="text-4xl sm:text-5xl lg:text-6xl font-bold" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
         {currentText}
         {/* カーソルアニメーション */}
         <motion.span
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.5, repeat: Infinity }}
-          className="inline-block w-1 h-12 sm:h-14 lg:h-16 ml-1 bg-gradient-to-b from-anime-purple to-anime-cyan"
+          className="inline-block w-1 h-12 sm:h-14 lg:h-16 ml-1 bg-blue-500 shadow-lg"
           aria-hidden="true"
         />
       </span>

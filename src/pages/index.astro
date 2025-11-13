@@ -114,18 +114,21 @@ const heroTexts = [
       />
     </div>
 
+    <!-- Dark Overlay for better text contrast -->
+    <div class="absolute inset-0 -z-15 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/80"></div>
+
     <!-- Animated Background -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-gradient-to-br from-anime-purple/20 via-anime-blue/10 to-anime-cyan/20 animate-gradient"></div>
-      <div class="absolute top-20 left-20 w-72 h-72 bg-anime-purple/30 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute bottom-20 right-20 w-96 h-96 bg-anime-cyan/30 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-blue-400/20 animate-gradient"></div>
+      <div class="absolute top-20 left-20 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float animation-delay-2000"></div>
     </div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-5xl mx-auto">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-effect mb-6">
-          <Sparkles className="w-5 h-5 text-anime-purple" />
-          <span class="text-sm font-medium">The future of Anime, today.</span>
+        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg mb-6">
+          <Sparkles className="w-5 h-5 text-blue-600" />
+          <span class="text-sm font-medium text-gray-900 dark:text-white">The future of Anime, today.</span>
         </div>
 
         <div class="mb-6">
@@ -137,15 +140,15 @@ const heroTexts = [
         <div class="mb-12 max-w-3xl mx-auto">
           <TypewriterText
             texts={heroTexts}
-            className="text-gray-600 dark:text-gray-300"
+            className="text-white drop-shadow-lg"
             client:load
           />
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-20">
           <a
             href="/services"
-            class="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-anime-purple to-anime-blue text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+            class="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold hover:shadow-2xl transition-all duration-300 hover:scale-105 shadow-lg cursor-pointer"
           >
             サービスを見る
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -153,7 +156,7 @@ const heroTexts = [
 
           <a
             href="/contact"
-            class="inline-flex items-center px-8 py-4 rounded-full glass-effect font-semibold hover:bg-anime-purple/10 dark:hover:bg-anime-cyan/10 transition-colors duration-300"
+            class="inline-flex items-center px-8 py-4 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md text-gray-900 dark:text-white font-semibold hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
           >
             お問い合わせ
           </a>
@@ -178,7 +181,7 @@ const heroTexts = [
         {problems.map((problem) => (
           <div class="text-center">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full glass-effect mb-4">
-              <problem.icon className="w-8 h-8 text-anime-purple" />
+              <problem.icon className="w-8 h-8 text-anime-blue" />
             </div>
             <h3 class="text-xl font-semibold mb-2">{problem.title}</h3>
             <p class="text-gray-600 dark:text-gray-400">
@@ -217,8 +220,8 @@ const heroTexts = [
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
               <div class="absolute -right-4 -bottom-4 w-24 h-24">
-                <div class="absolute inset-0 bg-gradient-to-r from-anime-purple to-anime-cyan rounded-full opacity-60 blur-lg"></div>
-                <div class="absolute inset-2 bg-gradient-to-r from-anime-purple to-anime-cyan rounded-full"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-anime-blue to-anime-blue rounded-full opacity-60 blur-lg"></div>
+                <div class="absolute inset-2 bg-gradient-to-r from-anime-blue to-anime-blue rounded-full"></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                   <Cpu className="w-12 h-12 text-white" />
                 </div>
@@ -255,7 +258,7 @@ const heroTexts = [
                     <h3 class="text-xl font-semibold mb-2 group-hover:gradient-text transition-all duration-300">
                       {service.title}
                     </h3>
-                    <p class="text-sm text-anime-purple dark:text-anime-cyan mb-2">
+                    <p class="text-sm text-anime-blue dark:text-anime-blue mb-2">
                       {service.description}
                     </p>
                     <p class="text-gray-600 dark:text-gray-400">
@@ -272,7 +275,7 @@ const heroTexts = [
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-gradient-to-r from-anime-purple to-anime-blue relative overflow-hidden">
+  <section class="py-20 bg-gradient-to-r from-anime-blue to-anime-blue relative overflow-hidden">
     <div class="absolute inset-0 bg-black/20"></div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center">
@@ -285,7 +288,7 @@ const heroTexts = [
         </p>
         <a
           href="/contact"
-          class="inline-flex items-center px-8 py-4 rounded-full bg-white text-anime-purple font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+          class="inline-flex items-center px-8 py-4 rounded-full bg-white text-anime-blue font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
         >
           <Rocket className="mr-2 w-5 h-5" />
           お問い合わせはこちら

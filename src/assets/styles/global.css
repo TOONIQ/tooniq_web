@@ -4,24 +4,74 @@
 
 /* グローバルスタイル - TOONIQウェブサイト用 */
 
+/* カラートークン定義 */
+:root {
+  /* Brand Colors */
+  --color-brand-blue: #2DA9D8;
+
+  /* Blue Scale */
+  --color-blue-50: #F0F9FC;
+  --color-blue-100: #E0F3F9;
+  --color-blue-200: #C1E7F3;
+  --color-blue-300: #8DD4E8;
+  --color-blue-400: #52BBDB;
+  --color-blue-500: #2DA9D8;
+  --color-blue-600: #1B8FBF;
+  --color-blue-700: #15739A;
+  --color-blue-800: #105A78;
+  --color-blue-900: #0C4459;
+
+  /* Neutral Scale */
+  --color-neutral-50: #F9FAFB;
+  --color-neutral-100: #F3F4F6;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #4B5563;
+  --color-neutral-800: #3E4248;
+  --color-neutral-900: #1E293B;
+
+  /* Charcoal Scale */
+  --color-charcoal-800: #2C3338;
+  --color-charcoal-900: #1A1F24;
+
+  /* Surface */
+  --color-surface: #FFFFFF;
+}
+
 @layer base {
-  /* フォントの設定 */
-  @font-face {
-    font-family: 'Inter';
-    font-display: swap;
-    src: local('Inter');
+  /* 基本スタイル */
+  * {
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
-  /* 基本スタイル */
   body {
-    @apply bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100;
-    @apply font-sans antialiased;
+    @apply bg-surface dark:bg-dark-bg text-charcoal-800 dark:text-gray-100;
+    @apply antialiased;
     @apply transition-colors duration-300;
+    transition: opacity 0.3s ease-in-out;
   }
 
   /* スムーズスクロール */
   html {
     @apply scroll-smooth;
+  }
+
+  /* 見出しのデフォルトカラー */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-charcoal-800 dark:text-gray-100;
+  }
+
+  /* 本文のデフォルトカラー */
+  p {
+    @apply text-neutral-700 dark:text-gray-300;
+  }
+
+  /* リンクのデフォルトスタイル */
+  a {
+    @apply text-blue-700 hover:text-blue-800 transition-colors;
   }
 }
 
@@ -36,7 +86,7 @@
 
   /* グラデーションテキスト */
   .gradient-text {
-    @apply bg-gradient-to-r from-anime-purple via-anime-blue to-anime-cyan;
+    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400;
     @apply bg-clip-text text-transparent;
   }
 
@@ -54,83 +104,6 @@
   .section-container {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
-
-  /* アニメーション付きグラデーション */
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
-  }
-
-  /* ホバースケール */
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
-  }
-
-  /* アニメグロー効果 */
-  .anime-glow {
-    @apply shadow-lg shadow-anime-purple/20;
-  }
-
-  .dark .anime-glow {
-    @apply shadow-anime-purple/40;
-  }
-}
-
-/* グローバルスクロールバースタイル */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-dark-card;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-gray-500;
-}
-
-/* カスタムアニメーション */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -153,10 +126,10 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-anime-purple/50 rounded-full;
+    @apply bg-blue-600/50 rounded-full;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-anime-purple;
+    @apply bg-blue-600;
   }
 }
