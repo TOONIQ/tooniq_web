@@ -172,25 +172,63 @@ export default function LoadingScreen() {
               The future of Anime, today.
             </motion.p>
 
-            {/* モダンなローディングスピナー（ロゴ統合版） */}
+            {/* 量子的ローディングスピナー（拡大版） */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-8 relative w-32 h-32"
+              className="mt-8 relative w-40 h-40"
             >
-              {/* 外側の回転リング */}
+              {/* 最外側のグローリング */}
               <motion.div
-                className="absolute inset-0 rounded-full border-[5px] border-blue-500/30 border-t-blue-500"
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: '2px solid transparent',
+                  borderTopColor: 'rgba(59, 130, 246, 0.4)',
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 外側の回転リング（太め） */}
+              <motion.div
+                className="absolute inset-2 rounded-full border-[6px] border-blue-500/20 border-t-blue-500"
+                style={{
+                  boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 中間の回転リング（逆回転） */}
+              <motion.div
+                className="absolute inset-5 rounded-full border-[5px] border-blue-400/15 border-t-blue-400"
+                style={{
+                  boxShadow: '0 0 12px rgba(96, 165, 250, 0.4)',
+                }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 内側の回転リング */}
+              <motion.div
+                className="absolute inset-8 rounded-full border-[4px] border-blue-300/10 border-b-blue-300"
+                style={{
+                  boxShadow: '0 0 10px rgba(125, 211, 252, 0.3)',
+                }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* 内側の回転リング（逆回転） */}
+              {/* パルスリング（量子効果） */}
               <motion.div
-                className="absolute inset-4 rounded-full border-[5px] border-blue-400/20 border-t-blue-400"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 rounded-full border-2 border-blue-400/0"
+                animate={{
+                  scale: [1, 1.15, 1],
+                  borderColor: ['rgba(59, 130, 246, 0)', 'rgba(59, 130, 246, 0.4)', 'rgba(59, 130, 246, 0)'],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
 
               {/* 中心のロゴシンボル（SVG直接実装） */}
@@ -202,15 +240,15 @@ export default function LoadingScreen() {
                 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="w-16 h-16 flex items-center justify-center">
+                <div className="w-20 h-20 flex items-center justify-center">
                   <svg
-                    width="56"
-                    height="56"
+                    width="64"
+                    height="64"
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{
-                      filter: 'drop-shadow(0 0 10px rgba(45, 169, 216, 0.8))'
+                      filter: 'drop-shadow(0 0 15px rgba(45, 169, 216, 1)) drop-shadow(0 0 25px rgba(59, 130, 246, 0.6))'
                     }}
                   >
                     <circle cx="32" cy="32" r="3" fill="#2DA9D8"/>
