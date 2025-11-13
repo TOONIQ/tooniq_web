@@ -172,64 +172,119 @@ export default function LoadingScreen() {
               The future of Anime, today.
             </motion.p>
 
-            {/* 量子的ローディングスピナー（拡大版） */}
+            {/* タクティカルロックオンスピナー */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-8 relative w-40 h-40"
+              className="mt-8 relative w-48 h-48"
             >
-              {/* 最外側のグローリング */}
+              {/* メインロックオンリング */}
               <motion.div
-                className="absolute inset-0 rounded-full"
+                className="absolute inset-0 rounded-full border-2 border-blue-400/40"
                 style={{
-                  border: '2px solid transparent',
-                  borderTopColor: 'rgba(59, 130, 246, 0.4)',
-                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
+                  boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)',
                 }}
+              />
+
+              {/* 外側のスキャンリング */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-transparent border-t-blue-500"
+                style={{
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* レーダースキャンライン */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              >
+                <div
+                  className="absolute w-full h-0.5"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.8) 50%, transparent 100%)',
+                    boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
+                  }}
+                />
+              </motion.div>
+
+              {/* 内側のトラッキングリング */}
+              <motion.div
+                className="absolute inset-8 rounded-full border border-blue-300/30"
               />
 
-              {/* 外側の回転リング（太め） */}
-              <motion.div
-                className="absolute inset-2 rounded-full border-[6px] border-blue-500/20 border-t-blue-500"
-                style={{
-                  boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)',
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }}
-              />
+              {/* コーナーブラケット（4隅） */}
+              {[0, 90, 180, 270].map((rotation, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute inset-0"
+                  style={{ transform: `rotate(${rotation}deg)` }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                >
+                  <div
+                    className="absolute top-0 left-1/2 -translate-x-1/2"
+                    style={{
+                      width: '2px',
+                      height: '12px',
+                      background: 'rgba(59, 130, 246, 0.8)',
+                      boxShadow: '0 0 8px rgba(59, 130, 246, 0.6)',
+                    }}
+                  />
+                  <div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 rotate-90"
+                    style={{
+                      width: '2px',
+                      height: '12px',
+                      background: 'rgba(59, 130, 246, 0.8)',
+                      boxShadow: '0 0 8px rgba(59, 130, 246, 0.6)',
+                    }}
+                  />
+                </motion.div>
+              ))}
 
-              {/* 中間の回転リング（逆回転） */}
-              <motion.div
-                className="absolute inset-5 rounded-full border-[5px] border-blue-400/15 border-t-blue-400"
-                style={{
-                  boxShadow: '0 0 12px rgba(96, 165, 250, 0.4)',
-                }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
-              />
+              {/* 距離マーカー（4方向） */}
+              {[0, 90, 180, 270].map((rotation, i) => (
+                <motion.div
+                  key={`marker-${i}`}
+                  className="absolute inset-0"
+                  style={{ transform: `rotate(${rotation}deg)` }}
+                  animate={{ opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.15 }}
+                >
+                  <div
+                    className="absolute top-4 left-1/2 -translate-x-1/2 w-0.5 h-2"
+                    style={{
+                      background: 'rgba(59, 130, 246, 0.6)',
+                    }}
+                  />
+                </motion.div>
+              ))}
 
-              {/* 内側の回転リング */}
-              <motion.div
-                className="absolute inset-8 rounded-full border-[4px] border-blue-300/10 border-b-blue-300"
-                style={{
-                  boxShadow: '0 0 10px rgba(125, 211, 252, 0.3)',
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-              />
-
-              {/* パルスリング（量子効果） */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-blue-400/0"
-                animate={{
-                  scale: [1, 1.15, 1],
-                  borderColor: ['rgba(59, 130, 246, 0)', 'rgba(59, 130, 246, 0.4)', 'rgba(59, 130, 246, 0)'],
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              />
+              {/* クロスヘア（照準） */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-16 h-16">
+                  {/* 水平線 */}
+                  <div
+                    className="absolute top-1/2 left-0 right-0 h-px"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.4) 40%, transparent 50%, rgba(59, 130, 246, 0.4) 60%, transparent 100%)',
+                    }}
+                  />
+                  {/* 垂直線 */}
+                  <div
+                    className="absolute left-1/2 top-0 bottom-0 w-px"
+                    style={{
+                      background: 'linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.4) 40%, transparent 50%, rgba(59, 130, 246, 0.4) 60%, transparent 100%)',
+                    }}
+                  />
+                </div>
+              </div>
 
               {/* 中心のロゴシンボル（SVG直接実装） */}
               <motion.div
