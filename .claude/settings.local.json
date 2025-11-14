@@ -16,7 +16,13 @@
       "Bash(done)",
       "Bash(do cp \"$component-original.tsx\" \"src/components/react/$component.tsx\")",
       "Bash(npm run dev:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npx playwright:*)",
+      "Bash(node screenshot.mjs:*)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []
