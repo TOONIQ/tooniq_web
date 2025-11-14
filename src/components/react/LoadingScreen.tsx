@@ -172,242 +172,90 @@ export default function LoadingScreen() {
               The future of Anime, today.
             </motion.p>
 
-            {/* 究極のエレガントスピナー - ホログラフィック量子リング */}
+            {/* 量子的ローディングスピナー（拡大版） */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-8 relative w-64 h-64"
+              className="mt-8 relative w-40 h-40"
             >
-              {/* ホログラフィックグリッチ効果レイヤー */}
-              <motion.div
-                className="absolute inset-0"
-                animate={{
-                  opacity: [0, 0.05, 0],
-                  x: [0, 2, -2, 0],
-                }}
-                transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 3 }}
-              >
-                <div className="absolute inset-0 rounded-full border border-cyan-400/50 blur-sm" />
-                <div className="absolute inset-0 rounded-full border border-pink-400/50 blur-sm translate-x-1" />
-              </motion.div>
-
-              {/* エネルギーパルス波（外側に拡散） */}
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={`pulse-${i}`}
-                  className="absolute inset-0 rounded-full border-2"
-                  style={{
-                    borderColor: 'rgba(59, 130, 246, 0.3)',
-                  }}
-                  animate={{
-                    scale: [1, 1.8],
-                    opacity: [0.6, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: i * 1,
-                    ease: 'easeOut',
-                  }}
-                />
-              ))}
-
-              {/* 3D多層回転リング - 外層 */}
+              {/* 最外側のグローリング */}
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
                   border: '2px solid transparent',
-                  borderTopColor: 'rgba(96, 165, 250, 0.8)',
-                  borderRightColor: 'rgba(59, 130, 246, 0.4)',
-                  boxShadow: '0 0 30px rgba(59, 130, 246, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.1)',
-                  transform: 'rotateX(60deg)',
+                  borderTopColor: 'rgba(59, 130, 246, 0.4)',
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* 3D多層回転リング - 中層（逆回転） */}
+              {/* 外側の回転リング（太め） */}
               <motion.div
-                className="absolute inset-8 rounded-full"
+                className="absolute inset-2 rounded-full border-[6px] border-blue-500/20 border-t-blue-500"
                 style={{
-                  border: '2px solid transparent',
-                  borderBottomColor: 'rgba(45, 169, 216, 0.9)',
-                  borderLeftColor: 'rgba(96, 165, 250, 0.5)',
-                  boxShadow: '0 0 25px rgba(45, 169, 216, 0.5), inset 0 0 15px rgba(45, 169, 216, 0.2)',
-                  transform: 'rotateX(60deg)',
+                  boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)',
                 }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* 光のトレイル - 軌道パス1 */}
+              {/* 中間の回転リング（逆回転） */}
               <motion.div
-                className="absolute inset-0"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
-              >
-                <motion.div
-                  className="absolute top-0 left-1/2 w-3 h-3 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(45, 169, 216, 1) 0%, rgba(59, 130, 246, 0.5) 50%, transparent 100%)',
-                    boxShadow: '0 0 20px rgba(45, 169, 216, 1), 0 0 40px rgba(59, 130, 246, 0.6)',
-                    filter: 'blur(1px)',
-                  }}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [1, 0.7, 1],
-                  }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-              </motion.div>
-
-              {/* 光のトレイル - 軌道パス2（逆方向） */}
-              <motion.div
-                className="absolute inset-12"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
-              >
-                <motion.div
-                  className="absolute top-0 left-1/2 w-2 h-2 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(96, 165, 250, 1) 0%, rgba(147, 197, 253, 0.6) 50%, transparent 100%)',
-                    boxShadow: '0 0 15px rgba(96, 165, 250, 1), 0 0 30px rgba(147, 197, 253, 0.5)',
-                    filter: 'blur(0.5px)',
-                  }}
-                  animate={{
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{ duration: 1.2, repeat: Infinity }}
-                />
-              </motion.div>
-
-              {/* クリスタルプリズム効果 - 六角形リング */}
-              {[0, 60, 120, 180, 240, 300].map((rotation, i) => (
-                <motion.div
-                  key={`crystal-${i}`}
-                  className="absolute inset-16"
-                  style={{ transform: `rotate(${rotation}deg)` }}
-                  animate={{
-                    opacity: [0.3, 0.7, 0.3],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.15,
-                  }}
-                >
-                  <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8"
-                    style={{
-                      background: 'linear-gradient(180deg, rgba(147, 197, 253, 0.9) 0%, rgba(59, 130, 246, 0.3) 100%)',
-                      boxShadow: '0 0 10px rgba(147, 197, 253, 0.8)',
-                      filter: 'blur(0.5px)',
-                    }}
-                  />
-                </motion.div>
-              ))}
-
-              {/* エネルギーコアリング */}
-              <motion.div
-                className="absolute inset-20 rounded-full"
+                className="absolute inset-5 rounded-full border-[5px] border-blue-400/15 border-t-blue-400"
                 style={{
-                  background: 'radial-gradient(circle, rgba(45, 169, 216, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 100%)',
-                  border: '1px solid rgba(96, 165, 250, 0.3)',
-                  boxShadow: '0 0 20px rgba(45, 169, 216, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.2)',
+                  boxShadow: '0 0 12px rgba(96, 165, 250, 0.4)',
                 }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* 内側の回転リング */}
+              <motion.div
+                className="absolute inset-8 rounded-full border-[4px] border-blue-300/10 border-b-blue-300"
+                style={{
+                  boxShadow: '0 0 10px rgba(125, 211, 252, 0.3)',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* パルスリング（量子効果） */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-blue-400/0"
                 animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.8, 1, 0.8],
+                  scale: [1, 1.15, 1],
+                  borderColor: ['rgba(59, 130, 246, 0)', 'rgba(59, 130, 246, 0.4)', 'rgba(59, 130, 246, 0)'],
                 }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
 
-              {/* レーダースキャンライン（改良版） */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-              >
-                <div
-                  className="absolute w-full h-1"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(45, 169, 216, 0) 20%, rgba(45, 169, 216, 0.9) 50%, rgba(59, 130, 246, 0.3) 70%, transparent 100%)',
-                    boxShadow: '0 0 20px rgba(45, 169, 216, 0.8)',
-                    filter: 'blur(1px)',
-                  }}
-                />
-              </motion.div>
-
-              {/* ホログラフィックコーナーブラケット（8方向） */}
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, i) => (
-                <motion.div
-                  key={`bracket-${i}`}
-                  className="absolute inset-0"
-                  style={{ transform: `rotate(${rotation}deg)` }}
-                  animate={{
-                    opacity: [0.4, 1, 0.4],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.15,
-                  }}
-                >
-                  <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2"
-                    style={{
-                      width: '3px',
-                      height: '16px',
-                      background: 'linear-gradient(180deg, rgba(45, 169, 216, 1) 0%, rgba(59, 130, 246, 0.4) 100%)',
-                      boxShadow: '0 0 12px rgba(45, 169, 216, 1)',
-                      borderRadius: '1px',
-                    }}
-                  />
-                  <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 rotate-90"
-                    style={{
-                      width: '3px',
-                      height: '16px',
-                      background: 'linear-gradient(180deg, rgba(45, 169, 216, 1) 0%, rgba(59, 130, 246, 0.4) 100%)',
-                      boxShadow: '0 0 12px rgba(45, 169, 216, 1)',
-                      borderRadius: '1px',
-                    }}
-                  />
-                </motion.div>
-              ))}
-
-              {/* 中心のロゴシンボル（改良版 - ホログラフィック効果） */}
+              {/* 中心のロゴシンボル（SVG直接実装） */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.95, 1, 0.95],
+                  scale: [1, 1.05, 1],
+                  opacity: [0.9, 1, 0.9]
                 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <motion.div
-                  className="w-24 h-24 flex items-center justify-center"
-                  animate={{
-                    rotateY: [0, 360],
-                  }}
-                  transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                >
+                <div className="w-20 h-20 flex items-center justify-center">
                   <svg
-                    width="80"
-                    height="80"
+                    width="64"
+                    height="64"
                     viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{
-                      filter: 'drop-shadow(0 0 20px rgba(45, 169, 216, 1)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 50px rgba(96, 165, 250, 0.4))',
+                      filter: 'drop-shadow(0 0 15px rgba(45, 169, 216, 1)) drop-shadow(0 0 25px rgba(59, 130, 246, 0.6))'
                     }}
                   >
                     <circle cx="32" cy="32" r="3" fill="#2DA9D8"/>
                     <line x1="32" y1="32" x2="20" y2="20" stroke="#2DA9D8" strokeWidth="2.5" strokeLinecap="round"/>
                     <circle cx="20" cy="20" r="3" fill="#2DA9D8"/>
-                    <line x1="20" y1="20" x2="12" y2="16" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="12" cy="16" r="2.5" fill="#60A5FA"/>
+                    <line x1="20" y1="20" x2="12" y2="16" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="16" r="2.5" fill="#6B7280"/>
                     <line x1="32" y1="32" x2="44" y2="20" stroke="#2DA9D8" strokeWidth="2.5" strokeLinecap="round"/>
                     <circle cx="44" cy="20" r="3" fill="#2DA9D8"/>
                     <line x1="44" y1="20" x2="52" y2="12" stroke="#2DA9D8" strokeWidth="2" strokeLinecap="round"/>
@@ -416,131 +264,48 @@ export default function LoadingScreen() {
                     <circle cx="20" cy="44" r="3" fill="#2DA9D8"/>
                     <line x1="20" y1="44" x2="16" y2="52" stroke="#2DA9D8" strokeWidth="2" strokeLinecap="round"/>
                     <circle cx="16" cy="52" r="2.5" fill="#2DA9D8"/>
-                    <line x1="32" y1="32" x2="44" y2="44" stroke="#60A5FA" strokeWidth="2.5" strokeLinecap="round"/>
-                    <circle cx="44" cy="44" r="3" fill="#60A5FA"/>
-                    <line x1="44" y1="44" x2="48" y2="52" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="48" cy="52" r="2.5" fill="#60A5FA"/>
-                    <line x1="32" y1="32" x2="24" y2="32" stroke="#93C5FD" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="24" cy="32" r="2.5" fill="#93C5FD"/>
+                    <line x1="32" y1="32" x2="44" y2="44" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round"/>
+                    <circle cx="44" cy="44" r="3" fill="#6B7280"/>
+                    <line x1="44" y1="44" x2="48" y2="52" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="48" cy="52" r="2.5" fill="#6B7280"/>
+                    <line x1="32" y1="32" x2="24" y2="32" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="24" cy="32" r="2.5" fill="#6B7280"/>
                     <line x1="32" y1="32" x2="40" y2="32" stroke="#2DA9D8" strokeWidth="2" strokeLinecap="round"/>
                     <circle cx="40" cy="32" r="2.5" fill="#2DA9D8"/>
-                    <line x1="32" y1="32" x2="32" y2="24" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="32" cy="24" r="2.5" fill="#60A5FA"/>
+                    <line x1="32" y1="32" x2="32" y2="24" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="32" cy="24" r="2.5" fill="#6B7280"/>
                   </svg>
-                </motion.div>
+                </div>
               </motion.div>
             </motion.div>
 
-            {/* データストリームパーティクル（量子的な流れ） */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-              {/* 上昇する光のストリーム */}
-              {[...Array(20)].map((_, i) => (
+            {/* 装飾的なパーティクル（改善版） */}
+            <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+              {[...Array(12)].map((_, i) => (
                 <motion.div
-                  key={`stream-${i}`}
-                  className="absolute"
-                  style={{
-                    left: `${5 + i * 4.5}%`,
-                    bottom: '-10%',
-                  }}
-                  animate={{
-                    y: [0, -1200],
-                    opacity: [0, 0.8, 1, 0.8, 0],
-                  }}
-                  transition={{
-                    duration: 4 + (i % 4),
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                    ease: 'linear',
-                  }}
-                >
-                  {/* データストリームライン */}
-                  <div
-                    style={{
-                      width: '2px',
-                      height: `${60 + (i % 3) * 20}px`,
-                      background: `linear-gradient(180deg, transparent 0%, rgba(${i % 2 === 0 ? '45, 169, 216' : '96, 165, 250'}, 0.9) 50%, transparent 100%)`,
-                      boxShadow: `0 0 8px rgba(${i % 2 === 0 ? '45, 169, 216' : '96, 165, 250'}, 0.8)`,
-                      filter: 'blur(0.5px)',
-                    }}
-                  />
-                </motion.div>
-              ))}
-
-              {/* 浮遊する量子パーティクル */}
-              {[...Array(30)].map((_, i) => (
-                <motion.div
-                  key={`particle-${i}`}
+                  key={i}
                   className="absolute rounded-full"
                   style={{
-                    width: `${1 + (i % 4)}px`,
-                    height: `${1 + (i % 4)}px`,
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    background: `radial-gradient(circle, rgba(${i % 3 === 0 ? '45, 169, 216' : i % 3 === 1 ? '96, 165, 250' : '147, 197, 253'}, ${0.9 - (i % 5) * 0.15}) 0%, transparent 70%)`,
-                    boxShadow: `0 0 ${6 + (i % 3) * 4}px rgba(${i % 3 === 0 ? '45, 169, 216' : i % 3 === 1 ? '96, 165, 250' : '147, 197, 253'}, 0.7)`,
+                    width: `${2 + (i % 3)}px`,
+                    height: `${2 + (i % 3)}px`,
+                    left: `${10 + i * 7}%`,
+                    top: `${20 + (i % 4) * 15}%`,
+                    background: `radial-gradient(circle, rgba(59, 130, 246, ${0.6 - i * 0.05}) 0%, transparent 70%)`,
+                    boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
                   }}
                   animate={{
-                    y: [0, -50 - (i % 4) * 20, 0],
-                    x: [0, (i % 2 ? 30 : -30), 0],
-                    opacity: [0.3, 1, 0.3],
-                    scale: [0.8, 1.5, 0.8],
+                    y: [-30, -80, -30],
+                    x: [0, (i % 2 ? 20 : -20), 0],
+                    opacity: [0, 1, 0],
+                    scale: [0.5, 1.5, 0.5],
                   }}
                   transition={{
-                    duration: 3 + (i % 5),
+                    duration: 3 + (i % 3),
                     repeat: Infinity,
-                    delay: i * 0.1,
+                    delay: i * 0.2,
                     ease: 'easeInOut',
                   }}
                 />
-              ))}
-
-              {/* 螺旋状の光の軌跡 */}
-              {[0, 1, 2].map((spiralIndex) => (
-                <motion.div
-                  key={`spiral-${spiralIndex}`}
-                  className="absolute left-1/2 top-1/2"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                  }}
-                  animate={{
-                    rotate: 360,
-                  }}
-                  transition={{
-                    duration: 8 + spiralIndex * 2,
-                    repeat: Infinity,
-                    ease: 'linear',
-                    delay: spiralIndex * 0.5,
-                  }}
-                >
-                  {[...Array(8)].map((_, dotIndex) => {
-                    const angle = (dotIndex / 8) * Math.PI * 2
-                    const radius = 100 + spiralIndex * 30
-                    return (
-                      <motion.div
-                        key={`dot-${dotIndex}`}
-                        className="absolute rounded-full"
-                        style={{
-                          width: '3px',
-                          height: '3px',
-                          left: `calc(50% + ${Math.cos(angle) * radius}px)`,
-                          top: `calc(50% + ${Math.sin(angle) * radius}px)`,
-                          background: 'radial-gradient(circle, rgba(147, 197, 253, 1) 0%, transparent 70%)',
-                          boxShadow: '0 0 10px rgba(147, 197, 253, 1)',
-                        }}
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.5, 0.8],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: dotIndex * 0.15,
-                        }}
-                      />
-                    )
-                  })}
-                </motion.div>
               ))}
             </div>
           </div>
