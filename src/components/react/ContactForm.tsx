@@ -101,13 +101,24 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // APIエンドポイントにフォームデータを送信
-      const response = await fetch('/api/contact', {
+      // Web3Forms API を使用してフォームデータを送信（静的サイト対応）
+      const web3formsData = {
+        access_key: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+        subject: `お問い合わせ: ${formData.category}`,
+        from_name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        category: formData.category,
+        message: formData.message,
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(web3formsData)
       });
 
       const result = await response.json();
@@ -133,7 +144,7 @@ export default function ContactForm() {
       } else {
         // エラーレスポンス
         setSubmitStatus('error');
-        console.error('送信エラー:', result.error);
+        console.error('送信エラー:', result.message);
       }
     } catch (error) {
       // ネットワークエラーなど

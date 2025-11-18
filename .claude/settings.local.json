@@ -24,7 +24,8 @@
       "Bash(netstat:*)",
       "Bash(findstr:*)",
       "Bash(nul)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []

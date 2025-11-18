@@ -4,7 +4,10 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server', // サーバーモード: APIエンドポイントを使用可能にする
+  site: 'https://tooniq.co.jp',
+  output: 'static', // さくらインターネットはSSRに対応していないので静的サイトでビルドする
+  prefetch: true,
+  trailingSlash: 'never',
   integrations: [
     react(),
     tailwind({

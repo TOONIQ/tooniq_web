@@ -1,0 +1,35 @@
+# セキュリティヘッダー設定（さくらインターネット用）
+
+<IfModule mod_headers.c>
+  # Content Security Policy
+  Header set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self'; frame-src 'self'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://api.web3forms.com; object-src 'none'; media-src 'self'; upgrade-insecure-requests; block-all-mixed-content"
+
+  # Privacy and Security Headers
+  Header set Permissions-Policy "interest-cohort=()"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Cache Control
+  Header set Cache-Control "public, max-age=0, must-revalidate"
+
+  # HSTS (HTTP Strict Transport Security)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# エラーページ設定
+ErrorDocument 404 /404.html
+
+# MIME Types
+<IfModule mod_mime.c>
+  AddType application/javascript js
+  AddType text/css css
+  AddType image/svg+xml svg
+  AddType image/webp webp
+</IfModule>
+
+# Gzip圧縮を有効化
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
