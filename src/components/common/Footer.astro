@@ -1,0 +1,151 @@
+---
+/**
+ * フッターコンポーネント - TOONIQウェブサイト
+ *
+ * サイトフッター - 企業情報、リンク集、コピーライトを表示
+ * 静的コンテンツのため、Astroコンポーネントとして実装
+ */
+
+import { Mail, MapPin, Calendar } from 'lucide-react';
+
+// ============================================
+// データ定義
+// ============================================
+
+/** 現在の年を取得 */
+const currentYear = new Date().getFullYear();
+
+/** フッターリンクの型定義 */
+interface FooterLink {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+/** フッターリンクのグループ */
+const footerLinks: Record<string, FooterLink[]> = {
+  サービス: [
+    { href: '/services#animatime', label: 'AnimaTime' },
+    { href: '/services#consulting', label: '技術コンサルタント' },
+    { href: '/services#chatbot', label: 'ChatBot作成' },
+    { href: '/services#minutes', label: '議事録ツール' },
+    { href: '/services#custom', label: 'カスタム開発' },
+    { href: '/services#website', label: 'Webサイト制作' },
+  ],
+  企業情報: [
+    { href: '/about', label: '会社概要' },
+    { href: '/works', label: '実績紹介' },
+    { href: 'https://tooniq.co.jp/recruit', label: '採用情報', external: true },
+    { href: '/contact', label: 'お問い合わせ' },
+  ],
+};
+---
+
+<footer class="bg-gray-50 dark:bg-dark-card border-t border-gray-200 dark:border-dark-border mt-auto">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- ============================================
+           企業情報セクション
+           ============================================ -->
+      <div class="col-span-1 lg:col-span-2">
+        <div class="mb-4">
+          <h3 class="text-2xl font-bold gradient-text mb-2">
+            合同会社TOONIQ
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 italic">
+            "The future of Anime, today."
+          </p>
+        </div>
+
+        <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-md">
+          AIで「作業」から「人」を解放し、人間にしかできない「感動」を生み出すために、
+          アニメ制作の構造を根本から変える
+        </p>
+
+        <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+          <!-- 設立年 -->
+          <div class="flex items-center space-x-2">
+            <Calendar className="w-4 h-4 text-anime-purple" />
+            <span>設立: 2025年</span>
+          </div>
+
+          <!-- 所在地 -->
+          <div class="flex items-center space-x-2">
+            <MapPin className="w-4 h-4 text-anime-purple" />
+            <span>東京都</span>
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="flex items-center space-x-2">
+            <Mail className="w-4 h-4 text-anime-purple" />
+            <a
+              href="mailto:contact@tooniq.co.jp"
+              class="hover:text-anime-purple dark:hover:text-anime-cyan transition-colors"
+            >
+              contact@tooniq.co.jp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           リンクセクション
+           ============================================ -->
+      {Object.entries(footerLinks).map(([category, links]) => (
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+            {category}
+          </h4>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  class="text-sm text-gray-600 dark:text-gray-400 hover:text-anime-purple dark:hover:text-anime-cyan transition-colors duration-200"
+                >
+                  {link.label}
+                  {link.external && ' ↗'}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- ============================================
+         ボトムバー（コピーライトと法的リンク）
+         ============================================ -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-dark-border">
+      <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <!-- コピーライト -->
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          © {currentYear} 合同会社TOONIQ. All rights reserved.
+        </p>
+
+        <!-- 法的リンク -->
+        <div class="flex space-x-6">
+          <a
+            href="/privacy"
+            class="text-sm text-gray-600 dark:text-gray-400 hover:text-anime-purple dark:hover:text-anime-cyan transition-colors"
+          >
+            プライバシーポリシー
+          </a>
+          <a
+            href="/terms"
+            class="text-sm text-gray-600 dark:text-gray-400 hover:text-anime-purple dark:hover:text-anime-cyan transition-colors"
+          >
+            利用規約
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         装飾要素（グラデーションライン）
+         ============================================ -->
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-anime-purple to-transparent opacity-50"></div>
+  </div>
+</footer>
