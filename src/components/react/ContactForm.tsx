@@ -98,27 +98,50 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-    // フォーム送信のシミュレーション（実際の実装では、APIエンドポイントに送信）
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-
-      // フォームをリセット
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        category: 'general',
-        message: ''
+    try {
+      // APIエンドポイントにフォームデータを送信
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
 
-      // 5秒後にステータスをリセット
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
-    }, 2000);
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // 送信成功
+        setSubmitStatus('success');
+
+        // フォームをリセット
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          category: 'general',
+          message: ''
+        });
+
+        // 5秒後にステータスをリセット
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 5000);
+      } else {
+        // エラーレスポンス
+        setSubmitStatus('error');
+        console.error('送信エラー:', result.error);
+      }
+    } catch (error) {
+      // ネットワークエラーなど
+      setSubmitStatus('error');
+      console.error('送信エラー:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // ============================================
@@ -140,6 +163,20 @@ export default function ContactForm() {
           <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
           <span className="text-green-700 dark:text-green-400">
             お問い合わせを受け付けました。近日中にご連絡いたします。
+          </span>
+        </motion.div>
+      )}
+
+      {/* 送信エラーメッセージ */}
+      {submitStatus === 'error' && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center"
+        >
+          <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
+          <span className="text-red-700 dark:text-red-400">
+            送信に失敗しました。しばらく時間をおいて再度お試しください。
           </span>
         </motion.div>
       )}

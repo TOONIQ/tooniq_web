@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server', // サーバーモード: APIエンドポイントを使用可能にする
   integrations: [
     react(),
     tailwind({

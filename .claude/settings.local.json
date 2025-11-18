@@ -22,7 +22,9 @@
       "Bash(npm install:*)",
       "Bash(npm uninstall:*)",
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(nul)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
