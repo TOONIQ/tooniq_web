@@ -104,6 +104,7 @@ export default function ContactForm() {
       // Web3Forms API を使用してフォームデータを送信（静的サイト対応）
       const web3formsData = {
         access_key: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+        to: 'contact@tooniq.co.jp', // 送信先メールアドレスを明示的に指定
         subject: `お問い合わせ: ${formData.category}`,
         from_name: formData.name,
         company: formData.company,
@@ -112,6 +113,9 @@ export default function ContactForm() {
         category: formData.category,
         message: formData.message,
       };
+
+      // デバッグ用：送信データをコンソールに出力（本番環境では削除）
+      console.log('Sending form data:', web3formsData);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -122,6 +126,9 @@ export default function ContactForm() {
       });
 
       const result = await response.json();
+
+      // デバッグ用：レスポンスをコンソールに出力（本番環境では削除）
+      console.log('Web3Forms response:', result);
 
       if (response.ok && result.success) {
         // 送信成功
