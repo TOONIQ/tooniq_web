@@ -98,23 +98,13 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     setSubmitStatus('idle');
 
     try {
       // Web3Forms API を使用してフォームデータを送信（静的サイト対応）
-      // TODO: 本番環境では必ず環境変数を使用すること！
-      const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '';
-
-      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
-        console.error('Web3Forms access key is not configured!');
-        console.log('Please visit https://web3forms.com to get your access key');
-        setSubmitStatus('error');
-        setIsSubmitting(false);
-        return;
-      }
-
       const web3formsData = {
-        access_key: accessKey,
+        access_key: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '',
         to: 'contact@tooniq.co.jp', // 送信先メールアドレスを明示的に指定
         subject: `お問い合わせ: ${formData.category}`,
         from_name: formData.name,
@@ -125,9 +115,6 @@ export default function ContactForm() {
         message: formData.message,
       };
 
-      // デバッグ用：送信データをコンソールに出力（本番環境では削除）
-      console.log('Sending form data:', web3formsData);
-
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -137,9 +124,6 @@ export default function ContactForm() {
       });
 
       const result = await response.json();
-
-      // デバッグ用：レスポンスをコンソールに出力（本番環境では削除）
-      console.log('Web3Forms response:', result);
 
       if (response.ok && result.success) {
         // 送信成功
@@ -205,7 +189,7 @@ export default function ContactForm() {
         >
           <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
           <span className="text-red-700 dark:text-red-400">
-            送信に失敗しました。システム設定を確認中です。お急ぎの場合は直接 contact@tooniq.co.jp までご連絡ください。
+            送信に失敗しました。しばらく時間をおいて再度お試しください。
           </span>
         </motion.div>
       )}
